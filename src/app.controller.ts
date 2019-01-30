@@ -1,0 +1,17 @@
+import {
+  Controller,
+  ForbiddenException,
+  Get,
+  HttpException,
+} from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller('app')
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  root(): string {
+    return this.appService.root();
+  }
+}

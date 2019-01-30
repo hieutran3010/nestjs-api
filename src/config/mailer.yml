@@ -1,0 +1,10 @@
+transport:
+  host: pro15.emailserver.vn
+  port: 465
+  secure: true
+  auth:
+    user: lendodi.cms.admin@kph.vn
+    pass: Lendodi@2018
+defaults:
+    from: lendodi.cms.admin@kph.vn
+templateDir: ./src/email-templates
