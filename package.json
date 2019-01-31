@@ -1,7 +1,7 @@
 {
-  "name": "fless-nestjs-api-platform",
+  "name": "nestjs-api",
   "version": "0.1.0",
-  "description": "API Platform",
+  "description": "An api platform is developed by NestJS framework",
   "author": "flex-solutions",
   "license": "MIT",
   "scripts": {
@@ -39,7 +39,7 @@
     "dotenv": "^6.2.0",
     "fastify-formbody": "^2.0.0",
     "jade": "^1.11.0",
-    "joi": "^13.3.0",
+    "joi": "^14.3.1",
     "js-yaml": "^3.11.0",
     "jsonwebtoken": "^8.2.1",
     "lodash": "^4.17.11",
@@ -61,7 +61,7 @@
     "@types/cls-hooked": "^4.2.0",
     "@types/express": "^4.11.1",
     "@types/jest": "^22.2.3",
-    "@types/joi": "^13.0.8",
+    "@types/joi": "^14.3.0",
     "@types/js-yaml": "3.11.1",
     "@types/mongoose": "^5.3.10",
     "@types/node": "^10.12.19",
