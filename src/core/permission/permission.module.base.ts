@@ -1,5 +1,5 @@
-import { isNil, map } from 'ramda';
-import { isNullOrEmptyOrUndefined } from '../util';
+import { map } from 'ramda';
+import { isNullOrEmptyOrUndefined } from '../utils';
 import { metadataKeys } from './constant';
 import { IPermissionControlller, IPermissionDatabaseExecutor } from './interface';
 

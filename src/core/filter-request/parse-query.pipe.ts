@@ -3,11 +3,8 @@ import {
   Injectable,
   PipeTransform,
 } from '@nestjs/common';
-import {
-  FilterParserFactory,
-  ParserType,
-} from '../ultilities/filter/filter-parser';
-import { isNullOrEmptyOrUndefined } from '../util';
+import { FilterParserFactory, ParserType } from '../filter-request';
+import { isNullOrEmptyOrUndefined } from '../utils';
 
 @Injectable()
 export class ParseQueryPipe implements PipeTransform<any, any> {

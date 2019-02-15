@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { LoadYamlConfigure } from '../../../ultilities/yaml-configure-loader';
+import { loadYamlConfigure } from '../../../utils';
 import { MailerConfig } from '../config';
 
 @Injectable()
@@ -15,6 +15,6 @@ export class MailerConfigurationService {
     }
 
     public setConfig(configPath: string) {
-        this.config = LoadYamlConfigure(MailerConfig, configPath);
+        this.config = loadYamlConfigure(MailerConfig, configPath);
     }
 }

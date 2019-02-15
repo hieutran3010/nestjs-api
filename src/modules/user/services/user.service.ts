@@ -8,8 +8,7 @@ import { RepositoryFactory } from '../../../core/modules/database/factory/reposi
 import { ServiceBase } from '../../../core/modules/database/service/service.base';
 import { LoggingService } from '../../../core/modules/logging/logging.service';
 import { MailerService } from '../../../core/modules/mailer/services/mailer.service';
-import { Guid } from '../../../core/ultilities/guid';
-import { isNullOrEmptyOrUndefined } from '../../../core/util';
+import { Guid, Hash, isNullOrEmptyOrUndefined } from '../../../core/utils';
 import { DefaultGroup, DefaultRootUserName, DOCUMENT_NAME } from '../../../documents/const';
 import { controllerFields } from '../../../documents/permission-controller.document';
 import { PermissionDetailFields } from '../../../documents/permission-detail.document';
@@ -24,7 +23,6 @@ import { RequestContext } from '../../auth/context/request-context';
 import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { USER_MESSAGE_CODE } from '../message.user';
 import { LingualBadGatewayException, LingualUnauthorizedException } from './../../../core/exception-handling/exceptions/lingual-exception';
-import { Hash } from './../../../core/ultilities/hash.ultility';
 
 @Injectable()
 export class UserService extends ServiceBase {

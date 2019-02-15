@@ -1,9 +1,7 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import { map } from 'lodash';
 import { Connection, Model } from 'mongoose';
-import { countSkipItem } from '../../../../Utils/util';
-import { IdentityHelper } from '../../../ultilities/IdentityHelper';
-import { isNullOrEmptyOrUndefined } from '../../../util';
+import { countSkipItem, IdentityHelper, isNullOrEmptyOrUndefined } from '../../../utils';
 import { DTOBase, dtoBaseFields, InterfaceBase, SchemaBase } from '../base.document';
 
 /**

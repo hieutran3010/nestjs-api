@@ -5,9 +5,7 @@ import { ConfigService } from '../../../core/modules/configuration/config.servic
 import { MailerService } from '../../../core/modules/mailer/services/mailer.service';
 import { IPermissionControlller } from '../../../core/permission/common';
 import { metadataKeys } from '../../../core/permission/constant';
-import { Guid } from '../../../core/ultilities/guid';
-import { Hash } from '../../../core/ultilities/hash.ultility';
-import { isNullOrEmptyOrUndefined } from '../../../core/util';
+import { Guid, Hash, isNullOrEmptyOrUndefined } from '../../../core/utils';
 import { controllerFields } from '../../../documents/permission-controller.document';
 import { PermissionDetailFields } from '../../../documents/permission-detail.document';
 import { PermissionFields } from '../../../documents/permission.document';

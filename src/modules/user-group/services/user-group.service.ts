@@ -6,7 +6,7 @@ import { RepositoryBase } from '../../../core/modules/database/factory/repositor
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { ServiceBase } from '../../../core/modules/database/service/service.base';
 import { LoggingService } from '../../../core/modules/logging/logging.service';
-import { isNullOrEmptyOrUndefined } from '../../../core/util';
+import { isNullOrEmptyOrUndefined } from '../../../core/utils';
 import {
   DefaultGroup,
   DefaultPermissionScheme,

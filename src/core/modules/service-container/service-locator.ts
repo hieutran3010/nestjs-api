@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { find, get, isEmpty } from 'lodash';
-import { Guid } from './../../ultilities/guid';
+import { Guid } from '../../utils';
 import { IContainerInstance, NestJSExtendContainer } from './contract';
 
 @Injectable()

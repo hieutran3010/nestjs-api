@@ -3,7 +3,7 @@ import { ObjectId } from 'bson';
 import { LingualBadRequestException } from '../../../core/exception-handling/exceptions/lingual-exception';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { ServiceBase } from '../../../core/modules/database/service/service.base';
-import { isNullOrEmptyOrUndefined } from '../../../core/util';
+import { isNullOrEmptyOrUndefined } from '../../../core/utils';
 import { Branch, BranchDto, branchFields, BranchSchema } from '../../../documents/branch.document';
 import { DOCUMENT_NAME } from '../../../documents/const';
 import { BRANCH_MESSAGE_CODE } from '../branch.constant';

@@ -1,6 +1,6 @@
 import { isNil } from 'ramda';
+import { isNullOrEmptyOrUndefined } from '.';
 import { RequestContext } from '../../modules/auth/context/request-context';
-import { isNullOrEmptyOrUndefined } from '../util';
 
 export class IdentityHelper {
     public static getUsername(): string {

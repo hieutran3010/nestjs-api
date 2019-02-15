@@ -4,6 +4,7 @@ import { LingualBadRequestException } from '../../../core/exception-handling/exc
 import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { ServiceBase } from '../../../core/modules/database/service/service.base';
+import { isNullOrEmptyOrUndefined, stringToArray } from '../../../core/utils';
 import { DefaultPermissionScheme, DOCUMENT_NAME } from '../../../documents/const';
 import { Controller, ControllerDto, controllerFields, ControllerSchema, schemeName } from '../../../documents/permission-controller.document';
 import { PermissionDetailFields } from '../../../documents/permission-detail.document';
@@ -16,7 +17,6 @@ import { UserGroup, UserGroupFields, UserGroupSchema } from '../../../documents/
 import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { MessageCode } from '../constant';
 import { LoggingService } from './../../../core/modules/logging/logging.service';
-import { isNullOrEmptyOrUndefined, stringToArray } from './../../../core/util';
 
 @Injectable()
 export class PermissionSchemaService extends ServiceBase {
