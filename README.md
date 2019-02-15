@@ -18,6 +18,7 @@ This platform built-in supports the following features:
     + Sign up
     + Reset password
 - Configuration
+- Docker build
 
 ## Technical Stack:
 
