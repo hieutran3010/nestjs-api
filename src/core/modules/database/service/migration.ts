@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { descend, isNil, prop, sort } from 'ramda';
-import { LoggingService } from '../../logging/logging.service';
-import { IDatabaseMigration, MigrationCollection, migrationConst, MigrationPriority } from '../contract';
+import { LoggingService } from '../../logging';
+import { IDatabaseMigration, MigrationCollection, migrationConst, MigrationPriority } from '../contract/migration';
 
 @Injectable()
 export class DatabaseMigrationService {

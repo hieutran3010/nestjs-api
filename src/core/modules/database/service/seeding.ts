@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { descend, isNil, prop, sort } from 'ramda';
-import { LoggingService } from '../../logging/logging.service';
-import { IDatabaseSeeder, seedConst, SeederCollection, SeedPriority } from './../contract';
+import { LoggingService } from '../../logging';
+import { IDatabaseSeeder, seedConst, SeederCollection, SeedPriority } from '../contract/seeding';
 
 @Injectable()
 export class DatabaseSeedingService {

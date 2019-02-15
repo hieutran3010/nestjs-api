@@ -1,6 +1,6 @@
 import { Module, OnModuleInit } from '@nestjs/common';
-import { SeedPriority } from '../../core/modules/database-seeder/contract';
-import { DatabaseSeedingService } from './../../core/modules/database-seeder/services/seed';
+import { SeedPriority } from '../../core/modules/database/contract/seeding';
+import { DatabaseSeedingService } from './../../core/modules/database/service';
 import { controllers } from './controllers';
 import { BranchSeeder } from './migrations/branch.seeder';
 import { dataServices } from './services';

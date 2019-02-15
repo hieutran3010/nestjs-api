@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose';
 import { ConfigService } from '../configuration';
-import { DBConnection } from './constant/db.const';
+import { DBConnection } from './factory';
 
-export const databaseProviders = [
+export const mongoDbConnectionProviders = [
   {
     provide: DBConnection,
     useFactory: (config: ConfigService) => {

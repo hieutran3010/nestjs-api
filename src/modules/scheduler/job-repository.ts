@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { LoggingService } from '../../core/modules/logging/logging.service';
+import { LoggingService } from '../../core/modules/logging';
 import { JobBase } from './jobs/base/job-base';
 
 @Injectable()

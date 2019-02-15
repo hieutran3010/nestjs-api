@@ -1,5 +1,4 @@
-import { Injectable } from '@nestjs/common';
-import { RepositoryFactory } from '../factory/repository.factory';
+import { RepositoryFactory } from '../factory';
 
 /**
  * Define service base for all system and auto inject repository inside

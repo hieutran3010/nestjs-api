@@ -2,7 +2,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { contains, isNil } from 'ramda';
 import { RepositoryBase } from './core/modules/database/factory/repository.base';
 import { RepositoryFactory } from './core/modules/database/factory/repository.factory';
-import { ServiceBase } from './core/modules/database/service/service.base';
+import { ServiceBase } from './core/modules/database/service';
 import { IPermissionControlller, IPermissionDatabaseExecutor } from './core/permission/interface';
 import { DOCUMENT_NAME } from './documents/const';
 import { Controller, ControllerDto, controllerFields, ControllerSchema } from './documents/permission-controller';

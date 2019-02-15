@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
-import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
-import { ServiceBase } from '../../../core/modules/database/service/service.base';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
+import { ServiceBase } from '../../../core/modules/database/service';
 import { DOCUMENT_NAME } from '../../../documents/const';
 import { Job, JobSchema } from '../../../documents/job';
 import {

@@ -1,5 +1,5 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
-import { LoggingService } from '../modules/logging/logging.service';
+import { LoggingService } from '../modules/logging';
 import { isNullOrEmptyOrUndefined } from '../utils';
 import { MessageService } from './../../modules/message-pack/message.service';
 

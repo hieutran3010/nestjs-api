@@ -1,8 +1,8 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { PermissionControllerCollectService } from '../../app.service';
-import { SeedPriority } from '../../core/modules/database-seeder/contract';
+import { SeedPriority } from '../../core/modules/database/contract/seeding';
 import { PermissionModuleBase } from '../../core/permission';
-import { DatabaseSeedingService } from './../../core/modules/database-seeder/services/seed';
+import { DatabaseSeedingService } from './../../core/modules/database/service';
 import { controllers } from './controllers';
 import { PermissionSchemeSeeder } from './migrations/permission-scheme.seeder';
 import { PermissionSchemaService } from './services/permission-schema.service';

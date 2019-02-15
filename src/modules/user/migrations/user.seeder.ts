@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { isNil } from 'ramda';
 import { ConfigService } from '../../../core/modules/configuration';
-import { IDatabaseSeeder } from '../../../core/modules/database-seeder/contract';
-import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
-import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
+import { IDatabaseSeeder } from '../../../core/modules/database/contract/seeding';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
 import { Branch, branchFields, BranchSchema } from '../../../documents/branch';
 import { DefaultGroup, DOCUMENT_NAME } from '../../../documents/const';
 import { DefaultHOBranch, DefaultRootUserName } from '../../../documents/const';

@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { isNil } from 'ramda';
-import { IDatabaseSeeder } from '../../../core/modules/database-seeder/contract';
-import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
-import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
+import { IDatabaseSeeder } from '../../../core/modules/database/contract/seeding';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
 import { DOCUMENT_NAME } from '../../../documents/const';
 import { DataScope, PermissionDTO, PermissionInterface, PermissionSchema } from '../../../documents/permission';
 import { Controller, controllerFields, ControllerSchema, schemeName } from '../../../documents/permission-controller';

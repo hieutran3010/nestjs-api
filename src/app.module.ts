@@ -2,13 +2,9 @@ import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { PubSubGateway } from './app.pubsub.gateway';
 import { AppService, PermissionControllerCollectService } from './app.service';
-import { ConfigModule } from './core/modules';
+import { ConfigModule, DatabaseModule, LoggingModule } from './core/modules';
 import { ConfigService } from './core/modules/configuration';
-import { DatabaseMigrationModule } from './core/modules/database-migration/database-migration.module';
-import { DatabaseSeedingModule } from './core/modules/database-seeder/module';
-import { DatabaseModule } from './core/modules/database/database.module';
-import { LoggingModule } from './core/modules/logging/logging.module';
-import { LoggingService } from './core/modules/logging/logging.service';
+import { LoggingService } from './core/modules/logging';
 import { MailerModule } from './core/modules/mailer/mailer.module';
 import { MailerConfigurationService } from './core/modules/mailer/services/mailer-config.service';
 import { IPubSubConfig, PubSubConfigService } from './core/modules/pubsub.client/config';
@@ -30,8 +26,6 @@ import { PubsubMessageParser } from './pubsub.message-parser';
     ConfigModule,
     LoggingModule,
     DatabaseModule,
-    DatabaseSeedingModule,
-    DatabaseMigrationModule,
     MailerModule,
     ServiceContainerModule,
     AuthModule,

@@ -3,7 +3,7 @@ import * as bodyParser from 'body-parser';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/exception';
 import { ConfigService } from './core/modules/configuration';
-import { LoggingService } from './core/modules/logging/logging.service';
+import { LoggingService } from './core/modules/logging';
 import { CommonValidationPipe } from './core/validations';
 import {
   createSnorbsNamespace,

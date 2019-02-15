@@ -6,10 +6,9 @@ import {
   LingualBadRequestException,
   LingualUnauthorizedException } from '../../../core/exception/lingual-exceptions';
 import { ConfigService } from '../../../core/modules/configuration';
-import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
-import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
-import { ServiceBase } from '../../../core/modules/database/service/service.base';
-import { LoggingService } from '../../../core/modules/logging/logging.service';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
+import { ServiceBase } from '../../../core/modules/database/service';
+import { LoggingService } from '../../../core/modules/logging';
 import { MailerService } from '../../../core/modules/mailer/services/mailer.service';
 import { Guid, Hash, isNullOrEmptyOrUndefined } from '../../../core/utils';
 import { DefaultGroup, DefaultRootUserName, DOCUMENT_NAME } from '../../../documents/const';

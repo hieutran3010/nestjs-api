@@ -2,10 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'mongodb';
 import { contains, equals, forEach, hasIn } from 'ramda';
 import { LingualBadRequestException } from '../../../core/exception/lingual-exceptions';
-import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
-import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
-import { ServiceBase } from '../../../core/modules/database/service/service.base';
-import { LoggingService } from '../../../core/modules/logging/logging.service';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
+import { ServiceBase } from '../../../core/modules/database/service';
+import { LoggingService } from '../../../core/modules/logging';
 import { isNullOrEmptyOrUndefined } from '../../../core/utils';
 import {
   DefaultGroup,

@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Connection, connection } from 'mongoose';
-import { DBConnection } from '../constant/db.const';
 import { InterfaceBase, SchemaBase } from '../contract/base.document';
 import { RepositoryBase } from './repository.base';
+
+export const DBConnection: string = 'DBConnectionToken';
 
 @Injectable()
 export class RepositoryFactory {

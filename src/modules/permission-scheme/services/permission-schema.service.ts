@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { contains, isNil, map } from 'ramda';
 import { LingualBadRequestException } from '../../../core/exception/lingual-exceptions';
-import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
-import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
-import { ServiceBase } from '../../../core/modules/database/service/service.base';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
+import { ServiceBase } from '../../../core/modules/database/service';
 import { isNullOrEmptyOrUndefined, stringToArray } from '../../../core/utils';
 import { DefaultPermissionScheme, DOCUMENT_NAME } from '../../../documents/const';
 import { PermissionDTO,
@@ -16,7 +15,7 @@ import { PermissionDetailFields } from '../../../documents/permission-detail';
 import { UserGroup, UserGroupFields, UserGroupSchema } from '../../../documents/user-group';
 import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { MessageCode } from '../constant';
-import { LoggingService } from './../../../core/modules/logging/logging.service';
+import { LoggingService } from './../../../core/modules/logging';
 
 @Injectable()
 export class PermissionSchemaService extends ServiceBase {

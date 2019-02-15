@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { IDatabaseSeeder } from '../../../core/modules/database-seeder/contract';
-import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
-import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
+import { IDatabaseSeeder } from '../../../core/modules/database/contract/seeding';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
 import {
   DefaultGroup,
   DefaultPermissionScheme,

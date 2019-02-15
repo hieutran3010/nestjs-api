@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { PermissionControllerCollectService } from '../../app.service';
-import { SeedPriority } from '../../core/modules/database-seeder/contract';
-import { LoggingService } from '../../core/modules/logging/logging.service';
+import { SeedPriority } from '../../core/modules/database/contract/seeding';
+import { LoggingService } from '../../core/modules/logging';
 import { PermissionModuleBase } from '../../core/permission';
-import { DatabaseSeedingService } from './../../core/modules/database-seeder/services/seed';
+import { DatabaseSeedingService } from './../../core/modules/database/service';
 import { controllers } from './controllers';
 import { UserGroupSeeder } from './migrations/user-group.seeder';
 import { UserGroupService } from './services/user-group.service';
