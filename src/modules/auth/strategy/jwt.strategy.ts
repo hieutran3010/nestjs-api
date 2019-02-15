@@ -5,7 +5,7 @@ import { ConfigService } from '../../../core/modules/configuration/config.servic
 import { RequestContext } from '../context/request-context';
 import { JwtPayload } from '../interfaces/jwt-payload.interface';
 import { AuthService } from '../services/auth.service';
-import { LingualUnauthorizedException } from './../../../core/exception-handling/exceptions/lingual-exception';
+import { LingualUnauthorizedException } from './../../../core/exception/lingual-exceptions';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {

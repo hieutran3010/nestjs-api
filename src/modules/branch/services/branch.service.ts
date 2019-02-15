@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'bson';
-import { LingualBadRequestException } from '../../../core/exception-handling/exceptions/lingual-exception';
+import { LingualBadRequestException } from '../../../core/exception/lingual-exceptions';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { ServiceBase } from '../../../core/modules/database/service/service.base';
 import { isNullOrEmptyOrUndefined } from '../../../core/utils';

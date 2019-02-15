@@ -21,7 +21,7 @@ import {
   LingualBadRequestException,
   LingualForbiddenException,
   LingualUnauthorizedException,
-} from './../../../core/exception-handling/exceptions/lingual-exception';
+} from './../../../core/exception/lingual-exceptions';
 import { RecaptchaResponse } from './../interfaces/recaptcha-response.interface';
 import { IRoleValidator } from './../strategy/role-validator.interface';
 

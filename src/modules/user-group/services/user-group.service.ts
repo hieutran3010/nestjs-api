@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'mongodb';
 import { contains, equals, forEach, hasIn } from 'ramda';
-import { LingualBadRequestException } from '../../../core/exception-handling/exceptions/lingual-exception';
+import { LingualBadRequestException } from '../../../core/exception/lingual-exceptions';
 import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { ServiceBase } from '../../../core/modules/database/service/service.base';

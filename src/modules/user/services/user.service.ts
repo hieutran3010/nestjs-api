@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'bson';
 import { equals, head, isNil } from 'ramda';
-import { LingualBadRequestException } from '../../../core/exception-handling/exceptions/lingual-exception';
+import {
+  LingualBadGatewayException,
+  LingualBadRequestException,
+  LingualUnauthorizedException } from '../../../core/exception/lingual-exceptions';
 import { ConfigService } from '../../../core/modules/configuration/config.service';
 import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
@@ -22,7 +25,6 @@ import { User, UserDto, userFields, UserSchema } from '../../../documents/user.d
 import { RequestContext } from '../../auth/context/request-context';
 import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { USER_MESSAGE_CODE } from '../message.user';
-import { LingualBadGatewayException, LingualUnauthorizedException } from './../../../core/exception-handling/exceptions/lingual-exception';
 
 @Injectable()
 export class UserService extends ServiceBase {
