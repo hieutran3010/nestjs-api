@@ -1,7 +1,7 @@
 import { ExecutionContext, HttpService, Injectable } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 import { equals, filter, head } from 'ramda';
-import { ConfigService } from '../../../core/modules/configuration/config.service';
+import { ConfigService } from '../../../core/modules/configuration';
 import { MailerService } from '../../../core/modules/mailer/services/mailer.service';
 import { IPermissionControlller } from '../../../core/permission/common';
 import { metadataKeys } from '../../../core/permission/constant';

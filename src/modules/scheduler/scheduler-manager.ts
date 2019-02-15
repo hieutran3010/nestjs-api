@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as Agenda from 'agenda';
-import { ConfigService } from '../../core/modules/configuration/config.service';
+import { ConfigService } from '../../core/modules/configuration';
 import { JobDto } from '../../documents/job';
 import { JobRepository } from './job-repository';
 

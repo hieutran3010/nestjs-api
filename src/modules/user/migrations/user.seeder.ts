@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { isNil } from 'ramda';
-import { ConfigService } from '../../../core/modules/configuration/config.service';
+import { ConfigService } from '../../../core/modules/configuration';
 import { IDatabaseSeeder } from '../../../core/modules/database-seeder/contract';
 import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';

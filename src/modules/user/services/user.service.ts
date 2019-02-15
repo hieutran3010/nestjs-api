@@ -5,7 +5,7 @@ import {
   LingualBadGatewayException,
   LingualBadRequestException,
   LingualUnauthorizedException } from '../../../core/exception/lingual-exceptions';
-import { ConfigService } from '../../../core/modules/configuration/config.service';
+import { ConfigService } from '../../../core/modules/configuration';
 import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { ServiceBase } from '../../../core/modules/database/service/service.base';

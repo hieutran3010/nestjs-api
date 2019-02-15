@@ -3,9 +3,9 @@ import * as bodyParser from 'body-parser';
 import { JwtAuthGuard } from 'modules/auth/strategy/jwt-auth-guard';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/exception';
-import { ConfigService } from './core/modules/configuration/config.service';
+import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging/logging.service';
-import { ValidationPipe } from './core/validation/validation.pipe';
+import { CommonValidationPipe } from './core/validations/common-validation.pipe';
 import {
   createSnorbsNamespace,
   initializeRequestContext,
@@ -34,7 +34,7 @@ async function bootstrap() {
 
   app.useGlobalFilters(new HttpExceptionFilter(messageService, loggingService));
 
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new CommonValidationPipe());
 
   const authService = app.get<AuthService>(AuthService) as IRoleValidator;
   // Initialize global JWT auth guard

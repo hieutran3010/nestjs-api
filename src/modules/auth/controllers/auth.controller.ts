@@ -9,7 +9,7 @@ import {
   Render,
   Res,
 } from '@nestjs/common';
-import { ConfigService } from '../../../core/modules/configuration/config.service';
+import { ConfigService } from '../../../core/modules/configuration';
 import { ResetPasswordConstant } from '../constant/reset-password.constant';
 import { AuthService } from '../services/auth.service';
 import { SignedUser } from './../dto/signed-user.dto';

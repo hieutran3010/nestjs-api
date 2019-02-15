@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as bunyan from 'bunyan';
 import { createLogger, createLogzioLogger } from '../../../fless-backend-core/logging';
 import { isNullOrEmptyOrUndefined } from '../../utils';
-import { ConfigService } from '../configuration/config.service';
+import { ConfigService } from '../configuration';
 
 @Injectable()
 export class LoggingService {
