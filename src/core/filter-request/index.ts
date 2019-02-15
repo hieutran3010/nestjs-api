@@ -1,5 +1,4 @@
-import { isNullOrEmptyOrUndefined } from '..';
-import { UTF8Encoding } from '../ utf8-regex';
+import { isNullOrEmptyOrUndefined, UTF8Encoding } from '../utils';
 import { ParserType } from './parser/contract';
 import { FilterParserFactory } from './parser/factory';
 
