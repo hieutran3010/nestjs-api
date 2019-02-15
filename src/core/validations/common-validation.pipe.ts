@@ -1,6 +1,5 @@
 import {
   ArgumentMetadata,
-  BadRequestException,
   Injectable,
   PipeTransform,
 } from '@nestjs/common';
@@ -9,7 +8,7 @@ import { validate, ValidationError } from 'class-validator';
 import { LingualBadRequestException } from '../exception/lingual-exceptions';
 
 @Injectable()
-export class ValidationPipe implements PipeTransform<any> {
+export class CommonValidationPipe implements PipeTransform<any> {
   async transform(value, { metatype }: ArgumentMetadata) {
     if (!metatype || !this.toValidate(metatype)) {
       return value;
