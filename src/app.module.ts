@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { PubSubGateway } from './app.pubsub.gateway';
-import { AppService } from './app.service';
+import { AppService, PermissionControllerCollectService } from './app.service';
 import { ConfigModule } from './core/modules/configuration/config.module';
 import { ConfigService } from './core/modules/configuration/config.service';
 import { DatabaseMigrationModule } from './core/modules/database-migration/database-migration.module';
@@ -23,10 +23,9 @@ import { PermissionSchemeModule } from './modules/permission-scheme/module';
 import { SchedulerModule } from './modules/scheduler/scheduler.module';
 import { UserGroupModule } from './modules/user-group/module';
 import { UserModule } from './modules/user/user.module';
-import { PermissionControllerModule } from './permission-controller/permission-controller.module';
-import { ControllerService } from './permission-controller/services/controller.service';
 import { PubsubMessageParser } from './pubsub.message-parser';
 
+@Global()
 @Module({
   imports: [
     ConfigModule,
@@ -35,7 +34,6 @@ import { PubsubMessageParser } from './pubsub.message-parser';
     DatabaseSeedingModule,
     DatabaseMigrationModule,
     MailerModule,
-    PermissionControllerModule,
     ServiceContainerModule,
     CatsModule,
     AuthModule,
@@ -50,10 +48,11 @@ import { PubsubMessageParser } from './pubsub.message-parser';
   providers: [
     AppService,
     MessageService,
-    ControllerService,
+    PermissionControllerCollectService,
     PubsubMessageParser,
     PubSubGateway,
   ],
+  exports: [PermissionControllerCollectService]
 })
 export class AppModule {
   constructor(

@@ -1,8 +1,8 @@
 import { Module, OnModuleInit } from '@nestjs/common';
+import { PermissionControllerCollectService } from '../../app.service';
 import { SeedPriority } from '../../core/modules/database-seeder/contract';
-import { PermissionModuleBase } from '../../core/permission/permission.module.base';
+import { PermissionModuleBase } from '../../core/permission';
 import { DatabaseSeedingService } from './../../core/modules/database-seeder/services/seed';
-import { ControllerService } from './../../permission-controller/services/controller.service';
 import { controllers } from './controllers';
 import { UserSeeder } from './migrations/user.seeder';
 import { dataServices } from './services';
@@ -13,7 +13,7 @@ import { dataServices } from './services';
   exports: [...dataServices],
 })
 export class UserModule extends PermissionModuleBase implements OnModuleInit {
-  constructor(service: ControllerService, private seederService: DatabaseSeedingService, private userSeeder: UserSeeder) {
+  constructor(service: PermissionControllerCollectService, private seederService: DatabaseSeedingService, private userSeeder: UserSeeder) {
     super(service, controllers);
   }
 
