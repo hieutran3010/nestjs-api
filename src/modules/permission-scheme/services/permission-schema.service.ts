@@ -6,14 +6,14 @@ import { RepositoryFactory } from '../../../core/modules/database/factory/reposi
 import { ServiceBase } from '../../../core/modules/database/service/service.base';
 import { isNullOrEmptyOrUndefined, stringToArray } from '../../../core/utils';
 import { DefaultPermissionScheme, DOCUMENT_NAME } from '../../../documents/const';
-import { Controller, ControllerDto, controllerFields, ControllerSchema, schemeName } from '../../../documents/permission-controller.document';
-import { PermissionDetailFields } from '../../../documents/permission-detail.document';
 import { PermissionDTO,
     PermissionFields,
     PermissionInterface,
     PermissionSchema,
-    PermissionSchemesFields } from '../../../documents/permission.document';
-import { UserGroup, UserGroupFields, UserGroupSchema } from '../../../documents/user-group.document';
+    PermissionSchemesFields } from '../../../documents/permission';
+import { Controller, ControllerDto, controllerFields, ControllerSchema, schemeName } from '../../../documents/permission-controller';
+import { PermissionDetailFields } from '../../../documents/permission-detail';
+import { UserGroup, UserGroupFields, UserGroupSchema } from '../../../documents/user-group';
 import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { MessageCode } from '../constant';
 import { LoggingService } from './../../../core/modules/logging/logging.service';

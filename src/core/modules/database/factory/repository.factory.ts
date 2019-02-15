@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Connection, connection, Document, Schema } from 'mongoose';
-import { InterfaceBase, SchemaBase } from '../base.document';
+import { Connection, connection } from 'mongoose';
 import { DBConnection } from '../constant/db.const';
+import { InterfaceBase, SchemaBase } from '../contract/base.document';
 import { RepositoryBase } from './repository.base';
 
 @Injectable()

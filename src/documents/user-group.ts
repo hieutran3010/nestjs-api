@@ -1,8 +1,9 @@
 import { IsNotEmpty } from 'class-validator';
 import { Schema } from 'mongoose';
-import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/base.document';
-import { USER_GROUP_MESSAGE_CODE } from '../modules/user-group/message/message-codes';
+import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/contract/base.document';
+import { USER_GROUP_MESSAGE_CODE } from '../modules/user-group/const';
 import { DOCUMENT_NAME } from './const';
+
 const UserGroupSchema = new SchemaBase({
   name: { type: String, required: true, index: { unique: true } },
   description: String,

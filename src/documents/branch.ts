@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/base.document';
+import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/contract/base.document';
 
 /**
  * Define branch data transfer object

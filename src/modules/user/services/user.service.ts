@@ -13,18 +13,18 @@ import { LoggingService } from '../../../core/modules/logging/logging.service';
 import { MailerService } from '../../../core/modules/mailer/services/mailer.service';
 import { Guid, Hash, isNullOrEmptyOrUndefined } from '../../../core/utils';
 import { DefaultGroup, DefaultRootUserName, DOCUMENT_NAME } from '../../../documents/const';
-import { controllerFields } from '../../../documents/permission-controller.document';
-import { PermissionDetailFields } from '../../../documents/permission-detail.document';
-import { PermissionFields, PermissionInterface, PermissionSchema } from '../../../documents/permission.document';
+import { PermissionFields, PermissionInterface, PermissionSchema } from '../../../documents/permission';
+import { controllerFields } from '../../../documents/permission-controller';
+import { PermissionDetailFields } from '../../../documents/permission-detail';
+import { User, UserDto, userFields, UserSchema } from '../../../documents/user';
 import {
   UserGroup,
   UserGroupFields,
   UserGroupSchema,
-} from '../../../documents/user-group.document';
-import { User, UserDto, userFields, UserSchema } from '../../../documents/user.document';
+} from '../../../documents/user-group';
 import { RequestContext } from '../../auth/context/request-context';
 import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
-import { USER_MESSAGE_CODE } from '../message.user';
+import { USER_MESSAGE_CODE } from '../const';
 
 @Injectable()
 export class UserService extends ServiceBase {

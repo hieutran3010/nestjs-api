@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { Permission } from '../../../core/permission/common';
-import { UserGroupDto } from '../../../documents/user-group.document';
+import { UserGroupDto } from '../../../documents/user-group';
 import { UserGroupService } from '../services/user-group.service';
 
 @Permission('7CC932248A2B', 'User Group')

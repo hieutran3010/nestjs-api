@@ -4,10 +4,10 @@ import { ConfigService } from '../../../core/modules/configuration/config.servic
 import { IDatabaseSeeder } from '../../../core/modules/database-seeder/contract';
 import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
-import { Branch, branchFields, BranchSchema } from '../../../documents/branch.document';
+import { Branch, branchFields, BranchSchema } from '../../../documents/branch';
 import { DefaultGroup, DOCUMENT_NAME } from '../../../documents/const';
 import { DefaultHOBranch, DefaultRootUserName } from '../../../documents/const';
-import { UserDto } from '../../../documents/user.document';
+import { UserDto } from '../../../documents/user';
 import { RequestContext } from './../../auth/context/request-context';
 import { UserService } from './../services/user.service';
 

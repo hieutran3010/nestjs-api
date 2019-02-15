@@ -2,7 +2,7 @@ import { InternalServerErrorException } from '@nestjs/common';
 import { map } from 'lodash';
 import { Connection, Model } from 'mongoose';
 import { countSkipItem, IdentityHelper, isNullOrEmptyOrUndefined } from '../../../utils';
-import { DTOBase, dtoBaseFields, InterfaceBase, SchemaBase } from '../base.document';
+import { DTOBase, dtoBaseFields, InterfaceBase, SchemaBase } from '../contract/base.document';
 
 /**
  * Define db service base

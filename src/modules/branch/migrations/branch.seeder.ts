@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { isNil } from 'ramda';
 import { ConfigService } from '../../../core/modules/configuration/config.service';
 import { IDatabaseSeeder } from '../../../core/modules/database-seeder/contract';
-import { BranchDto } from '../../../documents/branch.document';
+import { BranchDto } from '../../../documents/branch';
 import { DefaultHOBranch, DOCUMENT_NAME } from '../../../documents/const';
 import { BranchService } from '../services/branch.service';
 

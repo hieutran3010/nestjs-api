@@ -1,5 +1,10 @@
-import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/base.document';
-import { PermissionDetailDTO, PermissionDetailInterface, PermissionDetailSchema } from './permission-detail.document';
+import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/contract/base.document';
+import { PermissionDetailDTO, PermissionDetailInterface, PermissionDetailSchema } from './permission-detail';
+
+enum DataScope{
+    branch,
+    full
+}
 
 const PermissionFields = {
     ID: '_id',
@@ -28,4 +33,4 @@ class PermissionDTO extends DTOBase {
     permission_details: Array<PermissionDetailDTO>;
 }
 
-export { PermissionSchema, PermissionInterface, PermissionDTO, PermissionFields, PermissionSchemesFields };
+export { PermissionSchema, PermissionInterface, PermissionDTO, PermissionFields, PermissionSchemesFields, DataScope };

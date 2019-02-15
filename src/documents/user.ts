@@ -10,8 +10,8 @@ import {
   DTOBase,
   InterfaceBase,
   SchemaBase,
-} from '../core/modules/database/base.document';
-import { USER_MESSAGE_CODE } from '../modules/user/message.user';
+} from '../core/modules/database/contract/base.document';
+import { USER_MESSAGE_CODE } from '../modules/user/const';
 import { DOCUMENT_NAME } from './const';
 
 /**

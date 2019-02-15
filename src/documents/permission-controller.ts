@@ -1,4 +1,4 @@
-import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/base.document';
+import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/contract/base.document';
 
 class ControllerDto extends DTOBase {
     key: string;
@@ -30,4 +30,4 @@ const ControllerSchema = new SchemaBase ({
     isObsolete: { type: Boolean }
 });
 
-export {controllerFields, Controller, ControllerDto, ControllerSchema, schemeName};
+export {controllerFields, Controller, ControllerDto, ControllerSchema, schemeName };

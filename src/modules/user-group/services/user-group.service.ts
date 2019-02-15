@@ -17,15 +17,15 @@ import {
   PermissionFields,
   PermissionInterface,
   PermissionSchema,
-} from '../../../documents/permission.document';
+} from '../../../documents/permission';
+import { User, userFields, UserSchema } from '../../../documents/user';
 import {
   UserGroup,
   UserGroupDto,
   UserGroupFields,
   UserGroupSchema,
-} from '../../../documents/user-group.document';
-import { User, userFields, UserSchema } from '../../../documents/user.document';
-import { USER_GROUP_MESSAGE_CODE } from '../message/message-codes';
+} from '../../../documents/user-group';
+import { USER_GROUP_MESSAGE_CODE } from '../const';
 
 @Injectable()
 export class UserGroupService extends ServiceBase {

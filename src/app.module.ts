@@ -7,7 +7,6 @@ import { ConfigService } from './core/modules/configuration/config.service';
 import { DatabaseMigrationModule } from './core/modules/database-migration/database-migration.module';
 import { DatabaseSeedingModule } from './core/modules/database-seeder/module';
 import { DatabaseModule } from './core/modules/database/database.module';
-import { CatsModule } from './core/modules/database/test/cat.module';
 import { LoggingModule } from './core/modules/logging/logging.module';
 import { LoggingService } from './core/modules/logging/logging.service';
 import { MailerModule } from './core/modules/mailer/mailer.module';
@@ -35,7 +34,6 @@ import { PubsubMessageParser } from './pubsub.message-parser';
     DatabaseMigrationModule,
     MailerModule,
     ServiceContainerModule,
-    CatsModule,
     AuthModule,
     UserModule,
     PermissionSchemeModule,

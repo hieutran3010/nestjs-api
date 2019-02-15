@@ -3,15 +3,14 @@ import { RepositoryBase } from '../../../core/modules/database/factory/repositor
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { ServiceBase } from '../../../core/modules/database/service/service.base';
 import { DOCUMENT_NAME } from '../../../documents/const';
-// tslint:disable-next-line:ordered-imports
+import { Job, JobSchema } from '../../../documents/job';
 import {
   JobInfomationSchema,
   JobInformation,
   JobInformationDto,
   jobInformationFields,
   JobStatus,
-} from '../../../documents/job-information.document';
-import { Job, JobSchema } from '../../../documents/job.document';
+} from '../../../documents/job-information';
 
 @Injectable()
 export class SchedulerService extends ServiceBase {

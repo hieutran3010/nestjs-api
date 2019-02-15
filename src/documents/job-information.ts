@@ -1,4 +1,4 @@
-import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/base.document';
+import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/contract/base.document';
 
 const jobInformationFields = {
     jobId: 'jobId',

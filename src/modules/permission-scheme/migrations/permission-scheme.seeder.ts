@@ -4,10 +4,9 @@ import { IDatabaseSeeder } from '../../../core/modules/database-seeder/contract'
 import { RepositoryBase } from '../../../core/modules/database/factory/repository.base';
 import { RepositoryFactory } from '../../../core/modules/database/factory/repository.factory';
 import { DOCUMENT_NAME } from '../../../documents/const';
-import { Controller, controllerFields, ControllerSchema, schemeName } from '../../../documents/permission-controller.document';
-import { DataScope } from '../../../documents/permission-datascope.document';
-import { PermissionDetailDTO } from '../../../documents/permission-detail.document';
-import { PermissionDTO, PermissionInterface, PermissionSchema } from '../../../documents/permission.document';
+import { DataScope, PermissionDTO, PermissionInterface, PermissionSchema } from '../../../documents/permission';
+import { Controller, controllerFields, ControllerSchema, schemeName } from '../../../documents/permission-controller';
+import { PermissionDetailDTO } from '../../../documents/permission-detail';
 
 @Injectable()
 export class PermissionSchemeSeeder implements IDatabaseSeeder {

@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { BranchDto } from '../../../documents/branch.document';
+import { BranchDto } from '../../../documents/branch';
 import { BranchService } from '../services/branch.service';
 
 @Controller('branch')

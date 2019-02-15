@@ -6,10 +6,10 @@ import { MailerService } from '../../../core/modules/mailer/services/mailer.serv
 import { IPermissionControlller } from '../../../core/permission/common';
 import { metadataKeys } from '../../../core/permission/constant';
 import { Guid, Hash, isNullOrEmptyOrUndefined } from '../../../core/utils';
-import { controllerFields } from '../../../documents/permission-controller.document';
-import { PermissionDetailFields } from '../../../documents/permission-detail.document';
-import { PermissionFields } from '../../../documents/permission.document';
-import { BasicUserInfo, UserDto } from '../../../documents/user.document';
+import { PermissionFields } from '../../../documents/permission';
+import { controllerFields } from '../../../documents/permission-controller';
+import { PermissionDetailFields } from '../../../documents/permission-detail';
+import { BasicUserInfo, UserDto } from '../../../documents/user';
 import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { UserService } from '../../user/services/user.service';
 import { ResetPasswordConstant } from '../constant/reset-password.constant';

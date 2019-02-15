@@ -5,7 +5,7 @@ import { RepositoryFactory } from './core/modules/database/factory/repository.fa
 import { ServiceBase } from './core/modules/database/service/service.base';
 import { IPermissionControlller, IPermissionDatabaseExecutor } from './core/permission/interface';
 import { DOCUMENT_NAME } from './documents/const';
-import { Controller, ControllerDto, controllerFields, ControllerSchema } from './documents/permission-controller.document';
+import { Controller, ControllerDto, controllerFields, ControllerSchema } from './documents/permission-controller';
 import { MessageService } from './modules/message-pack/message.service';
 
 @Injectable()

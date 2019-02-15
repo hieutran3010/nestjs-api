@@ -10,7 +10,7 @@ import {
   Query
 } from '@nestjs/common';
 import { Permission } from '../../../core/permission/common';
-import { UserDto } from '../../../documents/user.document';
+import { UserDto } from '../../../documents/user';
 import { UserService } from '../services/user.service';
 
 @Permission('06FDE342A965', 'User')

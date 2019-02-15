@@ -7,7 +7,7 @@ import {
   DefaultPermissionScheme,
   DOCUMENT_NAME,
 } from '../../../documents/const';
-import { UserGroup, UserGroupDto, UserGroupSchema } from '../../../documents/user-group.document';
+import { UserGroup, UserGroupDto, UserGroupSchema } from '../../../documents/user-group';
 import { UserGroupService } from '../services/user-group.service';
 
 @Injectable()
@@ -59,9 +59,11 @@ export class UserGroupSeeder implements IDatabaseSeeder {
   }
 
   async saveToDB(usergroupDTO: UserGroupDto) {
-    const ret = await this.userGroupService.checkDuplidatedUserGroupName(usergroupDTO);
-    if (!ret) {
-      await this.repository.create(usergroupDTO);
+    try {
+      await this.userGroupService.checkDuplidatedUserGroupName(usergroupDTO);
+    } catch {
+      return;
     }
+    await this.repository.create(usergroupDTO);
   }
 }

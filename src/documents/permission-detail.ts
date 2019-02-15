@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
-import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/base.document';
+import { DTOBase, InterfaceBase, SchemaBase } from '../core/modules/database/contract/base.document';
 import { DOCUMENT_NAME } from './const';
-import { DataScope } from './permission-datascope.document';
+import { DataScope } from './permission';
 
 const PermissionDetailSchema = new SchemaBase({
     controller: { type: Schema.Types.ObjectId, ref: DOCUMENT_NAME.Controller, required: true },
