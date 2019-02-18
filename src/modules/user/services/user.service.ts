@@ -9,7 +9,7 @@ import { ConfigService } from '../../../core/modules/configuration';
 import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
 import { ServiceBase } from '../../../core/modules/database/service';
 import { LoggingService } from '../../../core/modules/logging';
-import { MailerService } from '../../../core/modules/mailer/services/mailer.service';
+import { MailerService } from '../../../core/modules/mailer/services';
 import { Guid, Hash, isNullOrEmptyOrUndefined } from '../../../core/utils';
 import { DefaultGroup, DefaultRootUserName, DOCUMENT_NAME } from '../../../documents/const';
 import { PermissionFields, PermissionInterface, PermissionSchema } from '../../../documents/permission';
