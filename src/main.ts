@@ -5,6 +5,7 @@ import { HttpExceptionFilter } from './core/exception';
 import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
 import { TaskSchedulerManager } from './core/modules/task-scheduler';
+import { TaskSchedulerConfig } from './core/modules/task-scheduler/config/model';
 import { CommonValidationPipe } from './core/validations';
 import {
   createRequestNamespace,
@@ -30,8 +31,14 @@ async function bootstrap() {
   const messageService = app.get<MessageService>(MessageService);
   messageService.initialize();
 
+  const taskSchedulerConfig: TaskSchedulerConfig = {
+    dbServer: configService.dbConfig.server,
+    dbName: configService.dbConfig.dbname,
+    collectionName: configService.dbConfig.agendaCollectionName
+  };
+
   const schedulerManager = app.get<TaskSchedulerManager>(TaskSchedulerManager);
-  schedulerManager.initialize();
+  schedulerManager.initialize(taskSchedulerConfig);
 
   const loggingService = app.get<LoggingService>(LoggingService);
 

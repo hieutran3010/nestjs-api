@@ -1,23 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import * as Agenda from 'agenda';
-import { ConfigService } from '../configuration';
+import { loadYamlConfigure } from '../../utils';
+import { TaskSchedulerConfig } from './config/model';
 import { JobRepository } from './job-repository';
 import { JobDto } from './models/job';
 
 @Injectable()
 export class TaskSchedulerManager {
   private agenda: Agenda;
+  private config: TaskSchedulerConfig;
 
-  constructor(private configService: ConfigService, private jobRepository: JobRepository) {}
+  constructor(private jobRepository: JobRepository) {}
 
-  initialize() {
-    const dbConfig = this.configService.dbConfig;
-    const connectString = 'mongodb://' + dbConfig.server + '/' + dbConfig.dbname;
+  private doInitialize() {
+    const connectString = 'mongodb://' + this.config.dbServer + '/' + this.config.dbName;
 
     this.agenda = new Agenda({
       db: {
         address: connectString,
-        collection: dbConfig.agendaCollectionName,
+        collection: this.config.collectionName,
       },
     });
 
@@ -37,6 +38,16 @@ export class TaskSchedulerManager {
       // Start agenda
       this.agenda.start();
     });
+  }
+
+  initialize(config: TaskSchedulerConfig) {
+    this.config = config;
+    this.doInitialize();
+  }
+
+  initializeByConfigFile(configYmlFilePath: string) {
+    this.config = loadYamlConfigure(TaskSchedulerConfig, configYmlFilePath);
+    this.doInitialize();
   }
 
   disable(processingJobs: JobDto[]) {
