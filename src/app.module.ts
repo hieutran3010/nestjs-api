@@ -1,6 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService, PermissionControllerCollectService } from './app.service';
+import { PermissionControllerCollectService } from './app.service';
 import { ConfigModule, DatabaseModule, LoggingModule, MailerModule, PubSubClientModule } from './core/modules';
 import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
@@ -35,7 +35,6 @@ import { PubSubGateway, PubsubMessageParser } from './pubsub';
   ],
   controllers: [AppController],
   providers: [
-    AppService,
     MessageService,
     PermissionControllerCollectService,
     PubsubMessageParser,
