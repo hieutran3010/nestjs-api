@@ -7,8 +7,8 @@
         message_code: unauthorized
         type: 3
         content:
-            en: !!str You are not authorized to communicate SNOB API
-            vi: !!str Bạn không có quyền giao tiếp với SNOB API
+            en: !!str You are not authorized to communicate api
+            vi: !!str Bạn không có quyền giao tiếp với api
     -
         message_code: unhandle_exception
         type: 3

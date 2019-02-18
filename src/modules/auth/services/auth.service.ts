@@ -189,6 +189,7 @@ export class AuthService implements IRoleValidator {
         email: userDto.email,
         password: userDto.password,
         link,
+        brandName: this.configService.env.brandName,
         receive:
           lang === 'vi'
             ? ResetPasswordConstant.EmailReceiveMessageVi

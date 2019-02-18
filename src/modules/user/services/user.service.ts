@@ -268,6 +268,7 @@ export class UserService extends ServiceBase {
         cmslink: this.configService.adminConfig.cmsGuiUrl,
         email: userDto.email,
         password: userDto.password,
+        brandName: this.configService.env.brandName
       },
     };
 
