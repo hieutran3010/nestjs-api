@@ -44,7 +44,7 @@ export class ConfigService {
       DB_ACCOUNT: Joi.string(),
       DB_PASSWORD: Joi.string(),
 
-      AGENDA_COLLECTION: Joi.string().default('schedulers'),
+      TASK_SCHEDULER_COLLECTION_NAME: Joi.string().default('task-schedulers'),
       AUTH_TOKEN_EXPIRES_IN: Joi.string().default('4h'),
       RESET_PASS_TOKEN_EXPIRES_IN: Joi.string().default('0.5h'),
       LIMIT_LOGIN_ATTEMPTS: Joi.number(),
@@ -101,11 +101,18 @@ export class ConfigService {
   get dbConfig() {
     const config = {
       server: process.env.DB_SERVER || this.envConfig.DB_SERVER, // Refer config in process.env
-      dbname: this.envConfig.DB_NAME,
-      agendaCollectionName: this.envConfig.AGENDA_COLLECTION,
+      dbName: this.envConfig.DB_NAME,
     };
 
     return config;
+  }
+
+  get taskSchedulerConfig() {
+    return {
+      dbServer: this.dbConfig.server,
+      dbName : this.dbConfig.dbName,
+      collectionName: this.envConfig.TASK_SCHEDULER_COLLECTION_NAME,
+    };
   }
 
   get authentication() {

@@ -32,9 +32,9 @@ async function bootstrap() {
   messageService.initialize();
 
   const taskSchedulerConfig: TaskSchedulerConfig = {
-    dbServer: configService.dbConfig.server,
-    dbName: configService.dbConfig.dbname,
-    collectionName: configService.dbConfig.agendaCollectionName
+    dbServer: configService.taskSchedulerConfig.dbServer,
+    dbName: configService.taskSchedulerConfig.dbName,
+    collectionName: configService.taskSchedulerConfig.collectionName
   };
 
   const schedulerManager = app.get<TaskSchedulerManager>(TaskSchedulerManager);

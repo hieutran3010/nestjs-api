@@ -8,7 +8,7 @@ export const mongoDbConnectionProviders = [
     useFactory: (config: ConfigService) => {
       const configObject = config.dbConfig;
       const connectString =
-        `mongodb://${(process.env.DB_SERVER || configObject.server)}/${configObject.dbname}`;
+        `mongodb://${(process.env.DB_SERVER || configObject.server)}/${configObject.dbName}`;
       return mongoose.connect(connectString, {
         config: {
           autoIndex: false,
