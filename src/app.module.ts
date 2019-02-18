@@ -1,14 +1,12 @@
 import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { PubSubGateway } from './app.pubsub.gateway';
 import { AppService, PermissionControllerCollectService } from './app.service';
-import { ConfigModule, DatabaseModule, LoggingModule, MailerModule } from './core/modules';
+import { ConfigModule, DatabaseModule, LoggingModule, MailerModule, PubSubClientModule } from './core/modules';
 import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
 import { MailerConfigurationService } from './core/modules/mailer/services';
 import { IPubSubConfig, PubSubConfigService } from './core/modules/pubsub.client/config';
 import { PubSubParsingService } from './core/modules/pubsub.client/parser';
-import { PubSubClientModule } from './core/modules/pubsub.client/pubsub-client.module';
 import { ServiceContainerModule } from './core/modules/service-container/module';
 import { AuthModule } from './modules/auth/auth.module';
 import { BranchModule } from './modules/branch/branch.module';
@@ -17,7 +15,7 @@ import { PermissionSchemeModule } from './modules/permission-scheme/module';
 import { SchedulerModule } from './modules/scheduler/scheduler.module';
 import { UserGroupModule } from './modules/user-group/module';
 import { UserModule } from './modules/user/user.module';
-import { PubsubMessageParser } from './pubsub.message-parser';
+import { PubSubGateway, PubsubMessageParser } from './pubsub';
 
 @Global()
 @Module({

@@ -1,4 +1,3 @@
-import { WsResponse } from '@nestjs/websockets';
 import * as io from 'socket.io-client';
 import { INotificationChannel, INotificationPublisher, INotificationSubscriber } from '../common';
 import { PubSubMessageBase } from '../model';

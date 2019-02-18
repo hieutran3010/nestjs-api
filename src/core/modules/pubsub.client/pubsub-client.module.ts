@@ -1,7 +1,6 @@
-import { DynamicModule, Global, Module } from '@nestjs/common';
-import { notificationToken } from './common';
+import { Global, Module } from '@nestjs/common';
 import { PubSubConfigService } from './config';
-import { factoryProvider, NotificationChannelFactory } from './core/factory';
+import { factoryProvider } from './core/factory';
 import { PubSubParsingService } from './parser';
 
 @Global()
