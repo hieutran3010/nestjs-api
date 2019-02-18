@@ -2,7 +2,7 @@ import {
   DTOBase,
   InterfaceBase,
   SchemaBase,
-} from '../core/modules/database/contract/base.document';
+} from '../../database/contract/base.document';
 
 const jobFields = {
   NAME: 'name',

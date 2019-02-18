@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Permission } from '../../../core/permission/common';
-import { JobDto } from '../../../documents/job';
-import { SchedulerManager } from '../scheduler-manager';
+import { Permission } from '../../../permission/common';
+import { JobDto } from '../models/job';
+import { TaskSchedulerManager } from '../scheduler-manager';
 import { SchedulerService } from '../services/scheduler.service';
 
 @Permission('246667E39610', 'Task Scheduler')
@@ -9,7 +9,7 @@ import { SchedulerService } from '../services/scheduler.service';
 export class SchedulerController {
   constructor(
     private schedulerService: SchedulerService,
-    private schedulerManager: SchedulerManager,
+    private schedulerManager: TaskSchedulerManager,
   ) {}
 
   @Get('getall')

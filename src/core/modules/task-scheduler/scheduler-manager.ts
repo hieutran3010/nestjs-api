@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as Agenda from 'agenda';
-import { ConfigService } from '../../core/modules/configuration';
-import { JobDto } from '../../documents/job';
+import { ConfigService } from '../configuration';
 import { JobRepository } from './job-repository';
+import { JobDto } from './models/job';
 
 @Injectable()
-export class SchedulerManager {
+export class TaskSchedulerManager {
   private agenda: Agenda;
 
   constructor(private configService: ConfigService, private jobRepository: JobRepository) {}

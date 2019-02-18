@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { LoggingService } from '../../core/modules/logging';
-import { JobBase } from './jobs/base/job-base';
+import { LoggingService } from '../logging';
+import { JobBase } from './base-jobs';
 
 @Injectable()
 export class JobRepository {

@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/exception';
 import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
+import { TaskSchedulerManager } from './core/modules/task-scheduler';
 import { CommonValidationPipe } from './core/validations';
 import {
   createRequestNamespace,
@@ -13,7 +14,6 @@ import { AuthService } from './modules/auth/services/auth.service';
 import { JwtAuthGuard } from './modules/auth/strategy/jwt-auth-guard';
 import { IRoleValidator } from './modules/auth/strategy/role-validator.interface';
 import { MessageService } from './modules/message-pack/message.service';
-import { SchedulerManager } from './modules/scheduler/scheduler-manager';
 
 async function bootstrap() {
   const configService = new ConfigService(
@@ -30,7 +30,7 @@ async function bootstrap() {
   const messageService = app.get<MessageService>(MessageService);
   messageService.initialize();
 
-  const schedulerManager = app.get<SchedulerManager>(SchedulerManager);
+  const schedulerManager = app.get<TaskSchedulerManager>(TaskSchedulerManager);
   schedulerManager.initialize();
 
   const loggingService = app.get<LoggingService>(LoggingService);

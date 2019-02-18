@@ -1,15 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
-import { ServiceBase } from '../../../core/modules/database/service';
-import { DOCUMENT_NAME } from '../../../documents/const';
-import { Job, JobSchema } from '../../../documents/job';
+import { RepositoryBase, RepositoryFactory } from '../../database/factory';
+import { ServiceBase } from '../../database/service';
+import { Job, JobSchema } from '../models/job';
 import {
   JobInfomationSchema,
   JobInformation,
   JobInformationDto,
   jobInformationFields,
   JobStatus,
-} from '../../../documents/job-information';
+} from '../models/job-information';
 
 @Injectable()
 export class SchedulerService extends ServiceBase {
@@ -18,8 +17,8 @@ export class SchedulerService extends ServiceBase {
 
   constructor(repositoryFactory: RepositoryFactory) {
     super(repositoryFactory);
-    this.jobRepository = repositoryFactory.getRepository(DOCUMENT_NAME.Scheduler, JobSchema);
-    this.jobInfoRepository = repositoryFactory.getRepository(DOCUMENT_NAME.JobInformation, JobInfomationSchema);
+    this.jobRepository = repositoryFactory.getRepository('task-scheduler', JobSchema);
+    this.jobInfoRepository = repositoryFactory.getRepository('job-information', JobInfomationSchema);
   }
 
   async getAll() {

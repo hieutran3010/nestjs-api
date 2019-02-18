@@ -3,9 +3,7 @@ const DOCUMENT_NAME = {
   Controller: 'Controller',
   UserGroup: 'UserGroup',
   Permission: 'Permission',
-  Branch: 'Branch',
-  Scheduler: 'Scheduler',
-  JobInformation: 'JobInformation',
+  Branch: 'Branch'
 };
 
 const DefaultGroup = {

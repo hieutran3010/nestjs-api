@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { PermissionControllerCollectService } from './app.service';
-import { ConfigModule, DatabaseModule, LoggingModule, MailerModule, PubSubClientModule } from './core/modules';
+import { ConfigModule, DatabaseModule, LoggingModule, MailerModule, PubSubClientModule, TaskSchedulerModule } from './core/modules';
 import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
 import { MailerConfigurationService } from './core/modules/mailer/services';
@@ -12,7 +12,6 @@ import { AuthModule } from './modules/auth/auth.module';
 import { BranchModule } from './modules/branch/branch.module';
 import { MessageService } from './modules/message-pack/message.service';
 import { PermissionSchemeModule } from './modules/permission-scheme/module';
-import { SchedulerModule } from './modules/scheduler/scheduler.module';
 import { UserGroupModule } from './modules/user-group/module';
 import { UserModule } from './modules/user/user.module';
 import { PubSubGateway, PubsubMessageParser } from './pubsub';
@@ -31,7 +30,7 @@ import { PubSubGateway, PubsubMessageParser } from './pubsub';
     PubSubClientModule,
     UserGroupModule,
     BranchModule,
-    SchedulerModule,
+    TaskSchedulerModule,
   ],
   controllers: [AppController],
   providers: [
