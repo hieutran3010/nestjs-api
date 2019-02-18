@@ -28,13 +28,14 @@ import { USER_GROUP_MESSAGE_CODE } from '../const';
 
 @Injectable()
 export class UserGroupService extends ServiceBase {
+  logger: any;
   private repository: RepositoryBase<UserGroup>;
   private permissionSchemeRepository: RepositoryBase<PermissionInterface>;
   private userRepository: RepositoryBase<User>;
 
   constructor(
     repositoryFactory: RepositoryFactory,
-    private loggingService: LoggingService,
+    loggingService: LoggingService,
   ) {
     super(repositoryFactory);
     this.repository = repositoryFactory.getRepository(
@@ -49,6 +50,7 @@ export class UserGroupService extends ServiceBase {
       DOCUMENT_NAME.User,
       UserSchema,
     );
+    this.logger = loggingService.createLogger('UserGroupService');
   }
 
   async create(userGroup: UserGroupDto) {
@@ -178,7 +180,7 @@ export class UserGroupService extends ServiceBase {
 
     if (hasIn(UserGroupFields.NAME, userGroup)) {
       if (!userGroup[UserGroupFields.NAME]) {
-        this.loggingService.logger.error(
+        this.logger.error(
           `${userGroup.name} is not provided`,
         );
         throw new LingualBadRequestException(
@@ -193,7 +195,7 @@ export class UserGroupService extends ServiceBase {
     if (found && !isNullOrEmptyOrUndefined(found)) {
       // input user group has no _id => duplidated
       if (!id || !equals(id, found._id)) {
-        this.loggingService.logger.error(`${userGroup.name} is duplicated`);
+        this.logger.error(`${userGroup.name} is duplicated`);
         throw new LingualBadRequestException(
           USER_GROUP_MESSAGE_CODE.UniqueGroupName,
           [userGroup.name],
@@ -291,7 +293,7 @@ export class UserGroupService extends ServiceBase {
 
     // Throw exception if calling to update without id
     if (!ugId) {
-      this.loggingService.logger.error(`User Group id ${ugId} is not specified`);
+      this.logger.error(`User Group id ${ugId} is not specified`);
       throw new LingualBadRequestException(USER_GROUP_MESSAGE_CODE.UserGroupIDInvalid);
     }
 

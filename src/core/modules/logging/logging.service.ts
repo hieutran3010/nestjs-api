@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import * as bunyan from 'bunyan';
-import { createLogger, createLogzioLogger } from '../../../fless-backend-core/logging';
 import { isNullOrEmptyOrUndefined } from '../../utils';
 import { ConfigService } from '../configuration';
+import { createLogger, createLogzioLogger } from './bunyan-logger-provider';
 
 @Injectable()
 export class LoggingService {
@@ -11,23 +11,30 @@ export class LoggingService {
 
   get logger() {
     if (isNullOrEmptyOrUndefined(this._logger)) {
-      this.createLogger();
+      this._logger = this.createLogger();
     }
     return this._logger;
   }
 
-  private createLogger() {
+  public createLogger(name: string = ''): any {
+    if (name === '') {
+      name = this.configService.logging.name;
+    }
+
+    let logger;
     if (this.configService.logging.loggerType === 1) {
       // logz.io
-      this._logger = createLogzioLogger(this.configService.logging.logzIoApiToken, this.configService.logging.name);
+      logger = createLogzioLogger(this.configService.logging.logzIoApiToken, name);
     } else {
-      this._logger = createLogger(
-        this.configService.logging.name,
+      logger = createLogger(
+        name,
         this.configService.logging.path,
         this.configService.logging.rotatePeriod,
         this.configService.logging.rotateKeepingCount,
         this.configService.logging.level,
       );
     }
+
+    return logger;
   }
 }

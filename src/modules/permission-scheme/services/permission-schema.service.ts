@@ -18,17 +18,19 @@ import { MessageCode } from '../constant';
 import { LoggingService } from './../../../core/modules/logging';
 
 @Injectable()
-export class PermissionSchemaService extends ServiceBase {
+export class PermissionSchemeService extends ServiceBase {
 
+    logger: any;
     repository: RepositoryBase<PermissionInterface>;
     userGroupRepository: RepositoryBase<UserGroup>;
     controllerRepository: RepositoryBase<Controller>;
 
-    constructor(repositoryFactory: RepositoryFactory, private loggingService: LoggingService) {
+    constructor(repositoryFactory: RepositoryFactory, loggingService: LoggingService) {
         super(repositoryFactory);
         this.controllerRepository = repositoryFactory.getRepository<Controller>(DOCUMENT_NAME.Controller, ControllerSchema);
         this.repository = repositoryFactory.getRepository<PermissionInterface>(DOCUMENT_NAME.Permission, PermissionSchema);
         this.userGroupRepository = repositoryFactory.getRepository<UserGroup>(DOCUMENT_NAME.UserGroup, UserGroupSchema);
+        this.logger = loggingService.createLogger('PermissionSchemeService');
     }
 
     async create(permissionModel: PermissionDTO) {
@@ -147,7 +149,7 @@ export class PermissionSchemaService extends ServiceBase {
 
         // Throw exception if calling to update without id
         if (!id) {
-            this.loggingService.logger.error(`Scheme id ${id} is not specified`);
+            this.logger.error(`Scheme id ${id} is not specified`);
             throw new LingualBadRequestException(MessageCode.ID_INVALID);
         }
 

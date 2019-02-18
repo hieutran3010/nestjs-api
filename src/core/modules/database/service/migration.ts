@@ -5,10 +5,12 @@ import { IDatabaseMigration, MigrationCollection, migrationConst, MigrationPrior
 
 @Injectable()
 export class DatabaseMigrationService {
+    private logger: any;
     private migrations: MigrationCollection;
 
-    constructor(private loggingService: LoggingService) {
+    constructor(loggingService: LoggingService) {
         this.migrations = [];
+        this.logger = loggingService.createLogger('DatabaseMigrationService');
     }
 
     register(priority: MigrationPriority, seed: IDatabaseMigration) {
@@ -16,28 +18,28 @@ export class DatabaseMigrationService {
     }
 
     async migrate() {
-        this.loggingService.logger.info('migration' + this.migrations.length);
+        this.logger.info('migration' + this.migrations.length);
         const sortConditions = descend(prop(migrationConst.Priority));
         const sortFunction = sort(sortConditions);
         const listMigration = sortFunction(this.migrations);
         listMigration.forEach(seeder => {
             let wait = true;
-            this.loggingService.logger.info(`Execute migrate for migration ${seeder[migrationConst.Value].getName()}...`);
+            this.logger.info(`Execute migrate for migration ${seeder[migrationConst.Value].getName()}...`);
             seeder[migrationConst.Value].seed().then(() => {
                 wait = false;
             });
 
             while (wait) { require('deasync').sleep(100); }
-            this.loggingService.logger.info(`Execute migrate for migration ${seeder[migrationConst.Value].getName()} DONE.`);
+            this.logger.info(`Execute migrate for migration ${seeder[migrationConst.Value].getName()} DONE.`);
         });
     }
 
     async migrateOne(migrationName: string) {
         const migrator = this.migrations.find(s => s.value.getName() === migrationName);
         if (!isNil(migrator)) {
-            this.loggingService.logger.info(`Execute migrate for migration ${migrator.value.getName()}...`);
+            this.logger.info(`Execute migrate for migration ${migrator.value.getName()}...`);
             await migrator.value.migrate();
-            this.loggingService.logger.info(`Execute migrate for migration ${migrator.value.getName()} DONE.`);
+            this.logger.info(`Execute migrate for migration ${migrator.value.getName()} DONE.`);
         }
     }
 }

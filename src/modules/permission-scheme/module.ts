@@ -5,11 +5,11 @@ import { PermissionModuleBase } from '../../core/permission';
 import { DatabaseSeedingService } from './../../core/modules/database/service';
 import { controllers } from './controllers';
 import { PermissionSchemeSeeder } from './migrations/permission-scheme.seeder';
-import { PermissionSchemaService } from './services/permission-schema.service';
+import { PermissionSchemeService } from './services/permission-schema.service';
 
 @Module({
     controllers: [...controllers],
-    providers: [PermissionSchemaService, PermissionSchemeSeeder]
+    providers: [PermissionSchemeService, PermissionSchemeSeeder]
 })
 
 export class PermissionSchemeModule extends PermissionModuleBase implements OnModuleInit {

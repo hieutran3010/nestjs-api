@@ -20,7 +20,7 @@ export class NotificationChannelFactory implements INotificationChannelFactory {
     constructor(private configService: PubSubConfigService,
                 private parsingService: PubSubParsingService,
                 loggingService: LoggingService) {
-                    this.logger = loggingService.logger;
+                    this.logger = loggingService.createLogger('NotificationChannelFactory');
     }
 
     get<T extends PubSubMessageBase>(channel: string): INotificationChannel<T> {

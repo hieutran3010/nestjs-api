@@ -5,10 +5,12 @@ import { IDatabaseSeeder, seedConst, SeederCollection, SeedPriority } from '../c
 
 @Injectable()
 export class DatabaseSeedingService {
+    private logger: any;
     private seeds: SeederCollection;
 
-    constructor(private loggingService: LoggingService) {
+    constructor(loggingService: LoggingService) {
         this.seeds = [];
+        this.logger = loggingService.createLogger('DatabaseSeedingService');
     }
 
     register(priority: SeedPriority, seed: IDatabaseSeeder) {
@@ -16,28 +18,28 @@ export class DatabaseSeedingService {
     }
 
     async seed() {
-        this.loggingService.logger.info('migration' + this.seeds.length);
+        this.logger.info('migration' + this.seeds.length);
         const sortConditions = descend(prop(seedConst.Priority));
         const sortFunction = sort(sortConditions);
         const listSeed = sortFunction(this.seeds);
         listSeed.forEach(seeder => {
             let wait = true;
-            this.loggingService.logger.info(`Execute seed for document ${seeder[seedConst.Value].getName()}...`);
+            this.logger.info(`Execute seed for document ${seeder[seedConst.Value].getName()}...`);
             seeder[seedConst.Value].seed().then(() => {
                 wait = false;
             });
 
             while (wait) { require('deasync').sleep(100); }
-            this.loggingService.logger.info(`Execute seed for document ${seeder[seedConst.Value].getName()} DONE.`);
+            this.logger.info(`Execute seed for document ${seeder[seedConst.Value].getName()} DONE.`);
         });
     }
 
     async seedOne(document: string) {
         const seeder = this.seeds.find(s => s.value.getName() === document);
         if (!isNil(seeder)) {
-            this.loggingService.logger.info(`Execute seed for document ${seeder.value.getName()}...`);
+            this.logger.info(`Execute seed for document ${seeder.value.getName()}...`);
             await seeder.value.seed();
-            this.loggingService.logger.info(`Execute seed for document ${seeder.value.getName()} DONE.`);
+            this.logger.info(`Execute seed for document ${seeder.value.getName()} DONE.`);
         }
     }
 }

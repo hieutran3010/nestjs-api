@@ -2,13 +2,13 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/
 import { Permission } from '../../../core/permission/common';
 import { PermissionDTO } from '../../../documents/permission';
 import { ControllerDto } from '../../../documents/permission-controller';
-import { PermissionSchemaService } from '../services/permission-schema.service';
+import { PermissionSchemeService } from '../services/permission-schema.service';
 
 @Permission('3EE65047DF1C', 'Permission Scheme')
 @Controller('permission-scheme')
 export class PermissionSchemeController {
 
-    constructor(private readonly service: PermissionSchemaService) { }
+    constructor(private readonly service: PermissionSchemeService) { }
 
     @Get()
     async getAll(@Query() params): Promise<PermissionDTO[]> {

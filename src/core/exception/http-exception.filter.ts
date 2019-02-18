@@ -5,8 +5,14 @@ import { MessageService } from './../../modules/message-pack/message.service';
 
 @Catch()
 export class HttpExceptionFilter implements ExceptionFilter {
+
+  logger: any;
+
   constructor(private messageService: MessageService,
-              private loggingService: LoggingService) {}
+              loggingService: LoggingService) {
+                this.logger = loggingService.createLogger('HttpExceptionFilter');
+              }
+
   catch(exception: Error, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
@@ -15,7 +21,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     if (status === HttpStatus.INTERNAL_SERVER_ERROR &&
       !(exception instanceof HttpException)) {
-      this.loggingService.logger.error('[INTERNAL_SERVER_ERROR] Exception: ', exception);
+      this.logger.error('[INTERNAL_SERVER_ERROR] Exception: ', exception);
       response.status(status).json({
         statusCode: status,
         message: {

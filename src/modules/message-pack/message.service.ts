@@ -26,8 +26,12 @@ const replace = curry((props: string[], a: {}) => {
 
 @Injectable()
 export class MessageService {
+  logger: any;
   messages: Message[] = [];
-  constructor(private readonly loggingService: LoggingService) {}
+
+  constructor(loggingService: LoggingService) {
+    this.logger = loggingService.createLogger('LingualMessageService');
+  }
 
   public initialize() {
     const fp = './src/modules/message-pack/languages/messages.yml';
@@ -38,10 +42,10 @@ export class MessageService {
             fs.readFileSync(fp, 'utf8'),
           ) as Message[];
         } catch (e) {
-          this.loggingService.logger.error(e);
+          this.logger.error(e);
         }
       } else {
-        this.loggingService.logger.warn('Cannot find the messages.yml file');
+        this.logger.warn('Cannot find the messages.yml file');
       }
     });
   }

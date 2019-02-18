@@ -43,6 +43,8 @@ import { PubSubGateway, PubsubMessageParser } from './pubsub';
   exports: [PermissionControllerCollectService]
 })
 export class AppModule {
+  logger: any;
+
   constructor(
     private readonly configService: ConfigService,
     private readonly pubsubService: PubSubConfigService,
@@ -55,7 +57,9 @@ export class AppModule {
     this.configPubsub();
     this.configMailer();
 
-    loggingService.logger.info(
+    this.logger = loggingService.createLogger('AppModule');
+
+    this.logger.info(
       `${this.configService.env.brandName} is started successfully in env = ${
        this. configService.env.name
       } on port = ${this.configService.env.port}`,

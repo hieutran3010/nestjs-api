@@ -27,6 +27,7 @@ import { USER_MESSAGE_CODE } from '../const';
 
 @Injectable()
 export class UserService extends ServiceBase {
+  logger: any;
   private userRepository: RepositoryBase<User>;
   private permissionSchemeRepository: RepositoryBase<PermissionInterface>;
   private userGroupRepository: RepositoryBase<UserGroup>;
@@ -36,14 +37,15 @@ export class UserService extends ServiceBase {
   userFields.LOGIN_ATTEMPTS, userFields.PREVIOUS_TIME_LOGIN, userFields.USER_NAME];
 
   constructor(
+    loggingService: LoggingService,
     repositoryFactory: RepositoryFactory,
     private readonly emailService: MailerService,
-    private configService: ConfigService,
-    private loggingService: LoggingService  ) {
+    private configService: ConfigService) {
     super(repositoryFactory);
     this.userRepository = repositoryFactory.getRepository(DOCUMENT_NAME.User, UserSchema);
     this.userGroupRepository = repositoryFactory.getRepository(DOCUMENT_NAME.UserGroup, UserGroupSchema);
     this.permissionSchemeRepository = repositoryFactory.getRepository(DOCUMENT_NAME.Permission, PermissionSchema);
+    this.logger = loggingService.createLogger('UserService');
   }
 
   async getUserByUsername(usernameValue: string): Promise<UserDto> {
@@ -274,7 +276,7 @@ export class UserService extends ServiceBase {
 
     this.emailService.sendMail(email);
 
-    this.loggingService.logger.debug(
+    this.logger.debug(
       `Send email to user ${userDto.email} done`,
     );
   }
