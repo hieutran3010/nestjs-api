@@ -6,7 +6,7 @@ import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
 import { CommonValidationPipe } from './core/validations';
 import {
-  createSnorbsNamespace,
+  createRequestNamespace,
   initializeRequestContext,
 } from './modules/auth/context/request-context';
 import { AuthService } from './modules/auth/services/auth.service';
@@ -44,7 +44,7 @@ async function bootstrap() {
   app.useGlobalGuards(new JwtAuthGuard(authService));
 
   // Initialize request context
-  const ns = createSnorbsNamespace();
+  const ns = createRequestNamespace();
   app.use(initializeRequestContext(ns));
 
   app.useStaticAssets(__dirname + '/static');

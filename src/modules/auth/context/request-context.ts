@@ -52,12 +52,12 @@ export const initializeRequestContext = (ns) => {
     };
 };
 
-export const createSnorbsNamespace = () => {
+export const createRequestNamespace = () => {
     return createNamespace(requestContants.namespace);
 };
 
 const requestContants = {
-    namespace: 'snorbs',
+    namespace: 'api',
     userNameProperty: 'username',
     langCodeProperty: 'langcode'
 };
