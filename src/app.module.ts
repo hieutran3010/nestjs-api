@@ -1,5 +1,5 @@
 import { Global, Module } from '@nestjs/common';
-import { AppConfigService, configProviders, configs, LoggingConfigProvider } from './app.config';
+import { AppConfigService, dbConfigProvider, loggingConfigProvider } from './app.config';
 import { AppController } from './app.controller';
 import { PermissionControllerCollectService } from './app.service';
 import { DatabaseModule, LoggingModule, MailerModule, PubSubClientModule, TaskSchedulerModule } from './core/modules';
@@ -20,8 +20,8 @@ import { PubSubGateway, PubsubMessageParser } from './pubsub';
   imports: [
     MailerModule,
     ServiceContainerModule,
-    LoggingModule.forRoot(configProviders),
-    DatabaseModule.forRoot(configProviders),
+    LoggingModule.forRoot([loggingConfigProvider]),
+    DatabaseModule.forRoot([dbConfigProvider]),
     AuthModule,
     UserModule,
     PermissionSchemeModule,
@@ -32,13 +32,16 @@ import { PubSubGateway, PubsubMessageParser } from './pubsub';
   ],
   controllers: [AppController],
   providers: [
-    ...configProviders,
     MessageService,
     PermissionControllerCollectService,
     PubsubMessageParser,
     PubSubGateway,
+    {
+      provide: AppConfigService,
+      useValue: new AppConfigService(`src/config/${process.env.NODE_ENV}.env`),
+    },
   ],
-  exports: [PermissionControllerCollectService, ...configs]
+  exports: [PermissionControllerCollectService, AppConfigService]
 })
 export class AppModule {
   logger: any;

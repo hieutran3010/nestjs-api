@@ -55,21 +55,12 @@ export class DBConfigProvider implements IDBConfigProvider {
     }
 }
 
-export const configProviders = [
-    {
-        provide: AppConfigService,
-        useValue: new AppConfigService(`src/config/${process.env.NODE_ENV}.env`),
-    },
-    {
-        provide: LoggingConfigToken,
-        useClass: LoggingConfigProvider,
-    },
-    {
-        provide: DBConfigToken,
-        useClass: DBConfigProvider,
-    },
-];
+export const loggingConfigProvider = {
+    provide: LoggingConfigToken,
+    useClass: LoggingConfigProvider,
+};
 
-export const configs = [
-    AppConfigService,
-];
+export const dbConfigProvider = {
+    provide: DBConfigToken,
+    useClass: DBConfigProvider,
+};
