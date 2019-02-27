@@ -60,4 +60,5 @@ async function bootstrap() {
 
   await app.listen(configService.env.port);
 }
+process.setMaxListeners(Infinity);
 bootstrap();

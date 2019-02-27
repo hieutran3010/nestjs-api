@@ -33,10 +33,11 @@ export class RepositoryFactory {
     const connectString =
       `mongodb://${configObject.dbServer}/${configObject.dbName}`;
     this._connection = await mongoose.connect(connectString, {
+      useNewUrlParser: true,
       config: {
         autoIndex: false,
       },
-      useNewUrlParser: true
+      useFindAndModify: false
     });
 
     return this._connection;
