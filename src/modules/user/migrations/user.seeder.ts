@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { isNil } from 'ramda';
-import { ConfigService } from '../../../core/modules/configuration';
+import { AppConfigService } from '../../../app.config';
 import { IDatabaseSeeder } from '../../../core/modules/database/contract/seeding';
 import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
 import { Branch, branchFields, BranchSchema } from '../../../documents/branch';
@@ -15,8 +15,12 @@ export class UserSeeder implements IDatabaseSeeder {
 
     branchRepository: RepositoryBase<Branch>;
 
-    constructor(private userService: UserService, private configService: ConfigService, private repositoryFactory: RepositoryFactory) {
-        this.branchRepository = this.repositoryFactory.getRepository(DOCUMENT_NAME.Branch, BranchSchema);
+    constructor(private userService: UserService, private configService: AppConfigService, private repositoryFactory: RepositoryFactory) {
+       this.resolveServices();
+    }
+
+    async resolveServices() {
+        this.branchRepository = await this.repositoryFactory.getRepository<Branch>(DOCUMENT_NAME.Branch, BranchSchema);
     }
 
     async seed() {

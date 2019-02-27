@@ -1,5 +1,4 @@
-import { Document } from 'mongoose';
-import { InterfaceBase } from '../../base.document';
+import { InterfaceBase } from '../../contract/base.document';
 
 const catFields = {
   NAME: 'name',

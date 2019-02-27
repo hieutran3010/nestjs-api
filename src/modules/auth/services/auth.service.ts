@@ -1,7 +1,7 @@
 import { ExecutionContext, HttpService, Injectable } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 import { equals, filter, head } from 'ramda';
-import { ConfigService } from '../../../core/modules/configuration';
+import { AppConfigService } from '../../../app.config';
 import { MailerService } from '../../../core/modules/mailer/services';
 import { IPermissionControlller } from '../../../core/permission/common';
 import { metadataKeys } from '../../../core/permission/constant';
@@ -29,7 +29,7 @@ import { IRoleValidator } from './../strategy/role-validator.interface';
 export class AuthService implements IRoleValidator {
   constructor(
     private readonly userService: UserService,
-    private readonly configService: ConfigService,
+    private readonly configService: AppConfigService,
     private readonly httpService: HttpService,
     private readonly mailerService: MailerService,
   ) {}

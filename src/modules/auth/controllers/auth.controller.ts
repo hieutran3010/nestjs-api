@@ -9,7 +9,7 @@ import {
   Render,
   Res,
 } from '@nestjs/common';
-import { ConfigService } from '../../../core/modules/configuration';
+import { AppConfigService } from '../../../app.config';
 import { ResetPasswordConstant } from '../constant/reset-password.constant';
 import { AuthService } from '../services/auth.service';
 import { SignedUser } from './../dto/signed-user.dto';
@@ -17,7 +17,7 @@ import { SignedUser } from './../dto/signed-user.dto';
 @Controller('auth')
 export class AuthController {
   constructor(
-    private configService: ConfigService,
+    private configService: AppConfigService,
     private readonly authService: AuthService,
   ) {}
 

@@ -1,10 +1,14 @@
-transport:
+defaultMailer:
   host: <smtp_host>
   port: <smtp_port_number>
-  secure: true
+  secure: false
   auth:
     user: <email>
     pass: <pass>
 defaults:
     from: <email>
+sendGrid:
+    apiKey: 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
 templateDir: ./src/email-templates
+mailerType: 1 #0: default mailer, 1: sendgrid mailer, 2: extend mailer
+

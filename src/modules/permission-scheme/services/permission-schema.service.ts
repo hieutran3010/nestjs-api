@@ -25,12 +25,16 @@ export class PermissionSchemeService extends ServiceBase {
     userGroupRepository: RepositoryBase<UserGroup>;
     controllerRepository: RepositoryBase<Controller>;
 
-    constructor(repositoryFactory: RepositoryFactory, loggingService: LoggingService) {
+    constructor(protected readonly repositoryFactory: RepositoryFactory, loggingService: LoggingService) {
         super(repositoryFactory);
-        this.controllerRepository = repositoryFactory.getRepository<Controller>(DOCUMENT_NAME.Controller, ControllerSchema);
-        this.repository = repositoryFactory.getRepository<PermissionInterface>(DOCUMENT_NAME.Permission, PermissionSchema);
-        this.userGroupRepository = repositoryFactory.getRepository<UserGroup>(DOCUMENT_NAME.UserGroup, UserGroupSchema);
+        this.resolveServices();
         this.logger = loggingService.createLogger('PermissionSchemeService');
+    }
+
+    async resolveServices() {
+        this.controllerRepository = await this.repositoryFactory.getRepository<Controller>(DOCUMENT_NAME.Controller, ControllerSchema);
+        this.repository = await this.repositoryFactory.getRepository<PermissionInterface>(DOCUMENT_NAME.Permission, PermissionSchema);
+        this.userGroupRepository = await this.repositoryFactory.getRepository<UserGroup>(DOCUMENT_NAME.UserGroup, UserGroupSchema);
     }
 
     async create(permissionModel: PermissionDTO) {

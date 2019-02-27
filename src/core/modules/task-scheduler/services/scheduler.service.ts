@@ -15,10 +15,14 @@ export class SchedulerService extends ServiceBase {
   private jobRepository: RepositoryBase<Job>;
   private jobInfoRepository: RepositoryBase<JobInformation>;
 
-  constructor(repositoryFactory: RepositoryFactory) {
+  constructor(protected readonly repositoryFactory: RepositoryFactory) {
     super(repositoryFactory);
-    this.jobRepository = repositoryFactory.getRepository('task-scheduler', JobSchema);
-    this.jobInfoRepository = repositoryFactory.getRepository('job-information', JobInfomationSchema);
+    this.resolveServices();
+  }
+
+  async resolveServices() {
+    this.jobRepository = await this.repositoryFactory.getRepository<Job>('task-scheduler', JobSchema);
+    this.jobInfoRepository = await this.repositoryFactory.getRepository<JobInformation>('job-information', JobInfomationSchema);
   }
 
   async getAll() {

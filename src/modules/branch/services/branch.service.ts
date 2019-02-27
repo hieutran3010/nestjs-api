@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'bson';
 import { LingualBadRequestException } from '../../../core/exception/lingual-exceptions';
-import { RepositoryFactory } from '../../../core/modules/database/factory';
+import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
 import { ServiceBase } from '../../../core/modules/database/service';
 import { isNullOrEmptyOrUndefined } from '../../../core/utils';
 import { Branch, BranchDto, branchFields, BranchSchema } from '../../../documents/branch';
@@ -10,15 +10,20 @@ import { BRANCH_MESSAGE_CODE } from '../branch.constant';
 
 @Injectable()
 export class BranchService extends ServiceBase {
-    private branchRepostitory;
+    private branchRepostitory: RepositoryBase<Branch>;
 
-    constructor(repositoryFactory: RepositoryFactory) {
+    constructor(protected readonly repositoryFactory: RepositoryFactory) {
         super(repositoryFactory);
-        this.branchRepostitory = repositoryFactory.getRepository(
+        this.resolveServices();
+    }
+
+    async resolveServices() {
+        this.branchRepostitory = await this.repositoryFactory.getRepository<Branch>(
             DOCUMENT_NAME.Branch,
             BranchSchema,
         );
     }
+
     async findOneByName(name: string): Promise<Branch> {
         const searchCondition = {};
         searchCondition[branchFields.NAME] = name;

@@ -36,7 +36,6 @@ export class RepositoryBase<T extends InterfaceBase> {
         'The schema must be extends from SchemaBase',
       );
     }
-
     this.model = connection.model(collectionName, schema) as Model<T>;
   }
 

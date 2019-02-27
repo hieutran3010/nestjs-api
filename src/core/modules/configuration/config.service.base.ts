@@ -8,10 +8,10 @@ export interface EnvConfig {
   [prop: string]: string;
 }
 
-export class ConfigService {
+export abstract class ConfigServiceBase {
   private readonly envConfig: EnvConfig;
 
-  constructor(filePath: string) {
+  constructor(protected filePath: string) {
     const config = dotenv.parse(fs.readFileSync(filePath));
     this.envConfig = this.validateInput(config);
   }
@@ -20,8 +20,18 @@ export class ConfigService {
    * Ensures all needed variables are set, and returns the validated JavaScript object
    * including the applied default values.
    */
-  private validateInput(envConfig: EnvConfig): EnvConfig {
-    const envVarsSchema: Joi.ObjectSchema = Joi.object({
+  protected validateInput(envConfig: EnvConfig): EnvConfig {
+    const envVarsSchema: Joi.ObjectSchema = Joi.object(this.getValidateDefinition());
+
+    const { error, value: validatedEnvConfig } = Joi.validate(envConfig, envVarsSchema);
+    if (error) {
+      throw new Error(`Config validation error: ${error.message}`);
+    }
+    return validatedEnvConfig;
+  }
+
+  protected getValidateDefinition(): any {
+    const result = {
       NODE_ENV: Joi.string()
         .valid(['dev', 'prod', 'uat'])
         .default('dev'),
@@ -63,13 +73,9 @@ export class ConfigService {
       REDIS_HOST: Joi.string(),
       REDIS_PORT: Joi.string(),
       REDIS_PASSWORD: Joi.string(),
-    });
+    };
 
-    const { error, value: validatedEnvConfig } = Joi.validate(envConfig, envVarsSchema);
-    if (error) {
-      throw new Error(`Config validation error: ${error.message}`);
-    }
-    return validatedEnvConfig;
+    return result;
   }
 
   get env() {
@@ -163,7 +169,6 @@ export class ConfigService {
         port: process.env.REDIS_PORT || this.envConfig.REDIS_PORT, // Refer config in process.env
         host: process.env.REDIS_HOST || this.envConfig.REDIS_HOST, // Refer config in process.env
         auth: process.env.REDIS_PASSWORD || this.envConfig.REDIS_PASSWORD, // Refer config in process.env
-        db: this.envConfig.IPOS_JOB_REDIS_DB, // if provided select a non-default redis db}
       }
     };
   }

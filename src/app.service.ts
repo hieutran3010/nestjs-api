@@ -6,19 +6,19 @@ import { ServiceBase } from './core/modules/database/service';
 import { IPermissionControlller, IPermissionDatabaseExecutor } from './core/permission/interface';
 import { DOCUMENT_NAME } from './documents/const';
 import { Controller, ControllerDto, controllerFields, ControllerSchema } from './documents/permission-controller';
-import { MessageService } from './modules/message-pack/message.service';
 
 @Injectable()
 export class PermissionControllerCollectService extends ServiceBase implements IPermissionDatabaseExecutor {
 
     controllerRepo: RepositoryBase<Controller>;
 
-    constructor(repositoryFactory: RepositoryFactory) {
+    constructor(protected readonly repositoryFactory: RepositoryFactory) {
         super(repositoryFactory);
-        this.controllerRepo = repositoryFactory.getRepository(DOCUMENT_NAME.Controller, ControllerSchema);
     }
 
     async saveToDb(info: IPermissionControlller): Promise<any> {
+        this.controllerRepo = await this.repositoryFactory.getRepository<Controller>(DOCUMENT_NAME.Controller, ControllerSchema);
+
         // find controller by key, if exist => just update name, otherwise, create a new one and insert to db
         const query = {};
         query[controllerFields.KEY] = info.key;

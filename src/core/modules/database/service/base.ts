@@ -8,5 +8,5 @@ import { RepositoryFactory } from '../factory';
  */
 
 export abstract class ServiceBase {
-  constructor(private readonly repositoryFactory: RepositoryFactory) {}
+  constructor(protected readonly repositoryFactory: RepositoryFactory) {}
 }

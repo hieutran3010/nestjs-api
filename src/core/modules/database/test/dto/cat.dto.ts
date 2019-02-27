@@ -1,4 +1,4 @@
-import { DTOBase } from '../../base.document';
+import { DTOBase } from '../../contract/base.document';
 
 export class CatDto  extends DTOBase{
   name: string;

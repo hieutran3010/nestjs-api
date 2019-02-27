@@ -22,7 +22,11 @@ export class UserGroupSeeder implements IDatabaseSeeder {
     private userGroupService: UserGroupService,
     private repositoryFactory: RepositoryFactory
   ) {
-    this.repository = this.repositoryFactory.getRepository(DOCUMENT_NAME.UserGroup, UserGroupSchema);
+    this.resolveServices();
+  }
+
+  async resolveServices() {
+    this.repository = await this.repositoryFactory.getRepository<UserGroup>(DOCUMENT_NAME.UserGroup, UserGroupSchema);
   }
 
   async seed() {

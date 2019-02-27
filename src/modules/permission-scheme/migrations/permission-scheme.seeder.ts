@@ -13,8 +13,12 @@ export class PermissionSchemeSeeder implements IDatabaseSeeder {
     schemeRepository: RepositoryBase<PermissionInterface>;
 
     constructor(private readonly repositoryFactory: RepositoryFactory) {
-        this.controllerRepository = this.repositoryFactory.getRepository(DOCUMENT_NAME.Controller, ControllerSchema);
-        this.schemeRepository = this.repositoryFactory.getRepository(DOCUMENT_NAME.Permission, PermissionSchema);
+        this.resolveServices();
+    }
+
+    async resolveServices() {
+        this.controllerRepository = await this.repositoryFactory.getRepository<Controller>(DOCUMENT_NAME.Controller, ControllerSchema);
+        this.schemeRepository = await this.repositoryFactory.getRepository<PermissionInterface>(DOCUMENT_NAME.Permission, PermissionSchema);
     }
 
     getName(): string {

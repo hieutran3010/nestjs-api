@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import * as bodyParser from 'body-parser';
+import { AppConfigService } from './app.config';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/exception';
-import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
 import { TaskSchedulerManager } from './core/modules/task-scheduler';
 import { TaskSchedulerConfig } from './core/modules/task-scheduler/config/model';
@@ -17,7 +17,7 @@ import { IRoleValidator } from './modules/auth/strategy/role-validator.interface
 import { MessageService } from './modules/message-pack/message.service';
 
 async function bootstrap() {
-  const configService = new ConfigService(
+  const configService = new AppConfigService(
     `src/config/${process.env.NODE_ENV}.env`,
   );
 

@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'bson';
 import { equals, head, isNil } from 'ramda';
+import { AppConfigService } from '../../../app.config';
 import {
   LingualBadGatewayException,
   LingualBadRequestException,
   LingualUnauthorizedException } from '../../../core/exception/lingual-exceptions';
-import { ConfigService } from '../../../core/modules/configuration';
 import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
 import { ServiceBase } from '../../../core/modules/database/service';
 import { LoggingService } from '../../../core/modules/logging';
@@ -40,12 +40,16 @@ export class UserService extends ServiceBase {
     loggingService: LoggingService,
     repositoryFactory: RepositoryFactory,
     private readonly emailService: MailerService,
-    private configService: ConfigService) {
+    private configService: AppConfigService) {
     super(repositoryFactory);
-    this.userRepository = repositoryFactory.getRepository(DOCUMENT_NAME.User, UserSchema);
-    this.userGroupRepository = repositoryFactory.getRepository(DOCUMENT_NAME.UserGroup, UserGroupSchema);
-    this.permissionSchemeRepository = repositoryFactory.getRepository(DOCUMENT_NAME.Permission, PermissionSchema);
+    this.resolveServices();
     this.logger = loggingService.createLogger('UserService');
+  }
+
+  async resolveServices() {
+    this.userRepository = await this.repositoryFactory.getRepository<User>(DOCUMENT_NAME.User, UserSchema);
+    this.userGroupRepository = await this.repositoryFactory.getRepository<UserGroup>(DOCUMENT_NAME.UserGroup, UserGroupSchema);
+    this.permissionSchemeRepository = await this.repositoryFactory.getRepository<PermissionInterface>(DOCUMENT_NAME.Permission, PermissionSchema);
   }
 
   async getUserByUsername(usernameValue: string): Promise<UserDto> {

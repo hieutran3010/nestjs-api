@@ -10,9 +10,13 @@ import { catSchema } from './../schemas/cat.schema';
 export class CatsService extends ServiceBase {
   private serviceBase: RepositoryBase<Cat>;
 
-  constructor(repositoryFactory: RepositoryFactory) {
+  constructor(protected readonly repositoryFactory: RepositoryFactory) {
     super(repositoryFactory);
-    this.serviceBase = repositoryFactory.getRepository('Cat', catSchema);
+    this.resolveServices();
+  }
+
+  async resolveServices() {
+    this.serviceBase = await this.repositoryFactory.getRepository<Cat>('Cat', catSchema);
   }
 
   async create(catDto: CatDto): Promise<CatDto[]> {

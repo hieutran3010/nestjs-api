@@ -3,7 +3,6 @@ import * as bodyParser from 'body-parser';
 import { JwtAuthGuard } from 'modules/auth/strategy/jwt-auth-guard';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/exception';
-import { ConfigService } from './core/modules/configuration';
 import { LoggingService } from './core/modules/logging';
 import { CommonValidationPipe } from './core/validations/common-validation.pipe';
 import {
@@ -17,10 +16,6 @@ import { MessageService } from './modules/message-pack/message.service';
 declare const module: any;
 
 async function bootstrap() {
-  const configService = new ConfigService(
-    `src/config/${process.env.NODE_ENV}.env`,
-  );
-
   const app = await NestFactory.create(AppModule, {
     cors: true,
   });

@@ -38,19 +38,23 @@ export class UserGroupService extends ServiceBase {
     loggingService: LoggingService,
   ) {
     super(repositoryFactory);
-    this.repository = repositoryFactory.getRepository(
+    this.resolveServices();
+    this.logger = loggingService.createLogger('UserGroupService');
+  }
+
+  async resolveServices() {
+    this.repository = await this.repositoryFactory.getRepository<UserGroup>(
       DOCUMENT_NAME.UserGroup,
       UserGroupSchema,
     );
-    this.permissionSchemeRepository = repositoryFactory.getRepository(
+    this.permissionSchemeRepository = await this.repositoryFactory.getRepository<PermissionInterface>(
       DOCUMENT_NAME.Permission,
       PermissionSchema,
     );
-    this.userRepository = repositoryFactory.getRepository(
+    this.userRepository = await this.repositoryFactory.getRepository<User>(
       DOCUMENT_NAME.User,
       UserSchema,
     );
-    this.logger = loggingService.createLogger('UserGroupService');
   }
 
   async create(userGroup: UserGroupDto) {

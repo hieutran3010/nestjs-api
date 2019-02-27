@@ -1,8 +1,8 @@
 import { Global, Module } from '@nestjs/common';
+import { AppConfigService, configProviders, configs, LoggingConfigProvider } from './app.config';
 import { AppController } from './app.controller';
 import { PermissionControllerCollectService } from './app.service';
-import { ConfigModule, DatabaseModule, LoggingModule, MailerModule, PubSubClientModule, TaskSchedulerModule } from './core/modules';
-import { ConfigService } from './core/modules/configuration';
+import { DatabaseModule, LoggingModule, MailerModule, PubSubClientModule, TaskSchedulerModule } from './core/modules';
 import { LoggingService } from './core/modules/logging';
 import { MailerConfigurationService } from './core/modules/mailer/services';
 import { IPubSubConfig, PubSubConfigService } from './core/modules/pubsub.client/config';
@@ -15,15 +15,13 @@ import { PermissionSchemeModule } from './modules/permission-scheme/module';
 import { UserGroupModule } from './modules/user-group/module';
 import { UserModule } from './modules/user/user.module';
 import { PubSubGateway, PubsubMessageParser } from './pubsub';
-
 @Global()
 @Module({
   imports: [
-    ConfigModule,
-    LoggingModule,
-    DatabaseModule,
     MailerModule,
     ServiceContainerModule,
+    LoggingModule.forRoot(configProviders),
+    DatabaseModule.forRoot(configProviders),
     AuthModule,
     UserModule,
     PermissionSchemeModule,
@@ -34,18 +32,19 @@ import { PubSubGateway, PubsubMessageParser } from './pubsub';
   ],
   controllers: [AppController],
   providers: [
+    ...configProviders,
     MessageService,
     PermissionControllerCollectService,
     PubsubMessageParser,
     PubSubGateway,
   ],
-  exports: [PermissionControllerCollectService]
+  exports: [PermissionControllerCollectService, ...configs]
 })
 export class AppModule {
   logger: any;
 
   constructor(
-    private readonly configService: ConfigService,
+    private readonly configService: AppConfigService,
     private readonly pubsubService: PubSubConfigService,
     private readonly pubSubMessageParser: PubsubMessageParser,
     private readonly pubsubParsingService: PubSubParsingService,

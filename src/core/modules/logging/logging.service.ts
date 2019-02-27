@@ -1,13 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import * as bunyan from 'bunyan';
 import { isNullOrEmptyOrUndefined } from '../../utils';
-import { ConfigService } from '../configuration';
 import { createLogger, createLogzioLogger } from './bunyan-logger-provider';
+import { ILoggingConfigProvider, ILogInfo, LoggingConfigToken } from './config';
 
 @Injectable()
 export class LoggingService {
   private _logger: bunyan;
-  constructor(private readonly configService: ConfigService) {}
+  private _config: ILogInfo;
+
+  constructor(@Inject(LoggingConfigToken) loggingConfig: ILoggingConfigProvider) {
+     this._config = loggingConfig.getConfig();
+  }
 
   get logger() {
     if (isNullOrEmptyOrUndefined(this._logger)) {
@@ -18,23 +22,35 @@ export class LoggingService {
 
   public createLogger(name: string = ''): any {
     if (name === '') {
-      name = this.configService.logging.name;
+      name = this._config.name;
     }
 
     let logger;
-    if (this.configService.logging.loggerType === 1) {
+    if (this._config.loggerType === 1) {
       // logz.io
-      logger = createLogzioLogger(this.configService.logging.logzIoApiToken, name);
+      logger = createLogzioLogger(this._config.logzIoApiToken, name);
     } else {
       logger = createLogger(
         name,
-        this.configService.logging.path,
-        this.configService.logging.rotatePeriod,
-        this.configService.logging.rotateKeepingCount,
-        this.configService.logging.level,
+        this._config.path,
+        this._config.rotatePeriod,
+        this._config.rotateKeepingCount,
+        this._config.level,
       );
     }
 
     return logger;
   }
+
+  // public createLogger(name: string = ''): any {
+
+  //   const logger = createLogger(
+  //     'logger',
+  //     './logs/app.log',
+  //     1,
+  //     1,
+  //     'debug',
+  //   );
+  //   return logger;
+  // }
 }
