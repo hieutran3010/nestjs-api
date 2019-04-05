@@ -8,7 +8,7 @@ defaultMailer:
 defaults:
     from: <email>
 sendGrid:
-    apiKey: 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
+    apiKey: <api_key>
 templateDir: ./src/email-templates
-mailerType: 1 #0: default mailer, 1: sendgrid mailer, 2: extend mailer
+mailerType: 0 #0: default mailer, 1: sendgrid mailer, 2: extend mailer
 

@@ -26,10 +26,6 @@ export class JwtAuthGuard implements CanActivate {
       return true;
     }
 
-    if (this.temporaryAllowNonSecureAccesstoMobileApi(context)) {
-      return true;
-    }
-
     // Using passport to check authentication
     const passportFn = createPassportContext(request, response);
     const jwtStrategy = this.getJwtStrategy(context);
@@ -70,27 +66,6 @@ export class JwtAuthGuard implements CanActivate {
     }
 
     return strategyName;
-  }
-
-  // TODO: will remove
-  temporaryAllowNonSecureAccesstoMobileApi(context: ExecutionContext) {
-    const controller = context.getClass();
-    const strategy = Reflect.getMetadata(
-      AUTH_METADATA_KEYS.MULTI_JWT_STRATEGY,
-      controller,
-    );
-
-    if (strategy && strategy !== '') {
-      // is mobile controller
-      const request = context.switchToHttp().getRequest();
-      if (request.headers['accept-version']) {
-        return false;
-      }
-
-      return true;
-    }
-
-    return false;
   }
 }
 

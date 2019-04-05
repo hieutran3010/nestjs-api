@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import { assocPath, compose, curry, find, propEq } from 'ramda';
-import { LoggingService } from '../../core/modules/logging';
+import { LoggingService } from '../core/modules/logging';
 
 export class Message {
   message_code: string;
