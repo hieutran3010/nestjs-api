@@ -1,0 +1,75 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='https://cdn.materialdesignicons.com/2.4.85/css/materialdesignicons.min.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.min.js')
+    style(type='text/css').
+      .container {
+        margin-top: 10%;
+      }
+      .reset-header {
+        text-align: center;
+        font-size: 2.8em;
+        margin-top: 20px;
+      }
+      .img-logo {
+        width: 9%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+      .input-container {
+        max-width: 550px;
+        margin: auto;
+        margin-top: 40px;
+      }
+      .input-group {
+        margin-bottom: 25px !important;
+      }
+      .reset-input {
+        height: 45px;
+        font-size: 0.75em;
+        font-weight: 300;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .submit-button {
+        width: 125px;
+        height: 35px;
+        color: white !important;
+      }
+      .error-message {
+        width: 100%;
+        margin-top: 1.25rem;
+        text-align: center;
+        font-size: 1.1em;
+        color: #dc3545;
+      }
+      .success-message {
+        width: 100%;
+        margin-top: 1.25rem;
+        text-align: center;
+        font-size: 1.1em;
+        color: #00E676;
+      }
+      .button-wrapper {
+        text-align: center;
+        margin-top: 25px;
+      }
+  body
+    .container
+      block content
+        img.img-logo(src="/img/logo-mini.svg" alt="Logo")
+        h1.reset-header RESET PASSWORD
+        if result == 'failed'
+          div.error-message #{message}
+        else
+          div.success-message #{message}
+        div.button-wrapper
+          a.btn.btn-dark.submit-button(href="#{cms}") Tới Trang CMS

@@ -1,0 +1,93 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='https://cdn.materialdesignicons.com/2.4.85/css/materialdesignicons.min.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.min.js')
+    style(type='text/css').
+      .container {
+        margin-top: 10%;
+      }
+      .reset-header {
+        text-align: center;
+        font-size: 2.8em;
+        margin-top: 20px;
+      }
+      .img-logo {
+        width: 9%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+      .input-container {
+        max-width: 550px;
+        margin: auto;
+        margin-top: 40px;
+      }
+      .input-group {
+        margin-bottom: 25px !important;
+      }
+      .reset-input {
+        height: 45px;
+        font-size: 0.75em;
+        font-weight: 300;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .submit-button {
+        float: right;
+        width: 125px;
+        height: 35px;
+        font-size: 0.9em;
+      }
+      .error {
+        width: 100%;
+        margin-top: .25rem;
+        font-size: 80%;
+        color: #dc3545;
+      }
+      .input-lang {
+        display: none;
+      }
+  body
+    .container
+      block content
+        form#resetForm(method='POST')
+          img.img-logo(src="/img/logo-mini.svg" alt="Logo")
+          h1.reset-header RESET PASSWORD
+          div.form.group.input-container
+            input.input-lang.form-control(name='language', value="#{lang}")
+            div.input-group.mb-3
+              div.input-group-prepend
+                span.input-group-text.icon-container
+                  i.mdi.mdi-lock-outline
+              input#password.reset-input.form-control(type='password', name='password', value='', placeholder='#{password}')
+            div.input-group.mb-3
+              div.input-group-prepend
+                span.input-group-text.icon-container
+                  i.mdi.mdi-lock-outline
+              input#confirm.reset-input.form-control(type='password', name='confirm', value='', placeholder='#{confirm}')
+            div#reset-submit
+              button.submit-button.btn.btn-dark(type='submit') SUBMIT
+    script.
+      $("#resetForm").validate({
+        rules: {
+          password: "required",
+          confirm: {
+            required: true,
+            equalTo: "#password"
+          }
+        },
+        messages: {
+          password: "#{password_require}",
+          confirm: {
+            required: "#{confirm_require}",
+            equalTo: '#{password_match}'
+          }
+        }
+      });

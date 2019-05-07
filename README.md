@@ -1,4 +1,4 @@
-# nestjs-api
+# fless-nestjs-api-platform
 
 ## Description
 
@@ -11,12 +11,14 @@ This platform built-in supports the following features:
     + Permission scheme management
 - Task scheduler platform by Agenda
 - Mailer (Default SMTP, SendGrid)
-- Logger (bunyan, Logz.io)
-- Pub/Sub by websocket
+- Logging (bunyan, Logz.io)
+- Pub/Sub by socket.io
 - Authentication by Passport
     + Sign in
     + Sign up
     + Reset password
+- Configuration
+- Docker build
 
 ## Technical Stack:
 

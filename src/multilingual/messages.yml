@@ -1,0 +1,611 @@
+---
+    #message_code: <controller_id>
+    #type: <type_code> #0: success, 1: info, 2: warning, 3: error
+    #content: en: <English message> vi: <Vietnamese message>
+    # Start Common
+    -
+        message_code: unauthorized
+        type: 3
+        content:
+            en: !!str You are not authorized to communicate api
+            vi: !!str Bạn không có quyền giao tiếp với api
+    -
+        message_code: unhandle_exception
+        type: 3
+        content:
+            en: !!str Internal Server Error
+            vi: !!str Đã xảy ra lỗi ngoài mong đợi, vui lòng thử lại sau
+    -   
+        message_code: common_001
+        type: 3
+        content:
+            en: !!str Forbidden resource
+            vi: !!str Từ chối truy cập
+    -   
+        message_code: common_002
+        type: 3
+        content:
+            en: !!str Your database is bad. System cannot find the default-user-permission-scheme
+            vi: !!str Dữ liệu hệ thống của bạn đang không chính xác. Hệ thống không thể tìm thấy kế hoạch phân quyền default-user-permission-scheme
+    -   
+        message_code: common_003
+        type: 3
+        content:
+            en: !!str The id is invalid
+            vi: !!str Id không hợp lệ
+    # End Common
+    # Start User Module
+    -
+        message_code: usercontroller_001
+        type: 3
+        content:
+            en: !!str Please provide email address
+            vi: !!str Vui lòng cung cấp địa chỉ email
+    -
+        message_code: usercontroller_002
+        type: 3
+        content:
+            en: !!str Email address is invalid
+            vi: !!str Địa chỉ email không đúng
+    -
+        message_code: usercontroller_003
+        type: 3
+        content:
+            en: !!str Email address has already been taken.
+            vi: !!str Địa chỉ email đã được sử dụng
+    -
+        message_code: usercontroller_004
+        type: 3
+        content:
+            en: !!str Please provide full name
+            vi: !!str Vui lòng cung cấp tên đầy đủ
+    -
+        message_code: usercontroller_005
+        type: 3
+        content:
+            en: !!str Please provide username
+            vi: !!str Vui lòng nhập tên đăng nhập
+    -   
+        message_code: usercontroller_006
+        type: 3
+        content:
+            en: !!str Username has already been taken
+            vi: !!str Tên đăng nhập đã được sử dụng
+    -   
+        message_code: usercontroller_007
+        type: 3
+        content:
+            en: !!str Please provide branch id
+            vi: !!str Vui lòng chọn một chi nhánh cho user
+    - 
+        message_code: usercontroller_008
+        type: 3
+        content:
+            en: !!str Root user is not allowed to edit
+            vi: !!str User root không được phép sửa
+    - 
+        message_code: usercontroller_009
+        type: 3
+        content:
+            en: !!str Root user is not allowed to delete
+            vi: !!str User root không được phép xóa
+    - 
+        message_code: usercontroller_010
+        type: 3
+        content:
+            en: !!str New password must differ from old password
+            vi: !!str Mật khẩu mới phải khác mật khẩu cũ
+    - 
+        message_code: usercontroller_011
+        type: 3
+        content:
+            en: !!str Old password is incorrect
+            vi: !!str Mật khẩu cũ không chính xác
+    - 
+        message_code: usercontroller_012
+        type: 3
+        content:
+            en: !!str The user id is invalid
+            vi: !!str User ID không hợp lệ
+    - 
+        message_code: usercontroller_013
+        type: 3
+        content:
+            en: !!str Username must not exceed 20 characters
+            vi: !!str Tên đăng nhập không được quá 20 ký tự
+    - 
+        message_code: usercontroller_014
+        type: 3
+        content:
+            en: !!str Username can only contains letters (a-Z), numbers, "-", "_", "."
+            vi: !!str Tên đăng nhập chỉ được bao gồm chữ (a-Z), số, "-", "_", "."
+    #End user module
+    # Start Authentication
+    -   
+        message_code: authcontroller_001
+        type: 3
+        content:
+            en: !!str Please enter your username
+            vi: !!str Vui lòng nhập tên đăng nhập
+    -   
+        message_code: authcontroller_002
+        type: 3
+        content:
+            en: !!str Please enter your password
+            vi: !!str Vui lòng nhập mật khẩu
+    -   
+        message_code: authcontroller_003
+        type: 3
+        content:
+            en: !!str Password is incorrect. You have {0} login attempts remain
+            vi: !!str Mật khẩu không chính xác. Bạn còn lại {0} lần đăng nhập
+    -   
+        message_code: authcontroller_004
+        type: 3
+        content:
+            en: !!str The login attempts exceeds {0} times. Your account is blocked, please contact system admin to unlock
+            vi: !!str Số lần đăng nhập cho phép của bạn đã vượt quá {0} lần. Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin để mở khóa
+    -   
+        message_code: authcontroller_005
+        type: 3
+        content:
+            en: !!str Username is incorrect
+            vi: !!str Tên đăng nhập không chính xác
+    -   
+        message_code: authcontroller_006
+        type: 3
+        content:
+            en: !!str Recaptcha is invalid. Please make sure that you are not a robot
+            vi: !!str Vui lòng đảm bảo bạn không phải là robot
+    -
+        message_code: authcontroller_007
+        type: 3
+        content:
+            en: !!str Your account is blocked, please contact system admin to unlock
+            vi: !!str Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin để mở khóa
+    -
+        message_code: authcontroller_008
+        type: 3
+        content:
+            en: !!str You are not allowed to access
+            vi: !!str Tài khoản của bạn không có quyền truy cập
+    -
+        message_code: authcontroller_009
+        type: 3
+        content:
+            en: !!str You are not allowed to insert new data on module
+            vi: !!str Tài khoản của bạn không có quyền thêm dữ liệu mới trên chức năng bạn vừa làm việc
+    -
+        message_code: authcontroller_010
+        type: 3
+        content:
+            en: !!str You are not allowed to update data on module
+            vi: !!str Tài khoản của bạn không có quyền cập nhật dữ liệu trên chức năng bạn vừa làm việc
+    -
+        message_code: authcontroller_011
+        type: 3
+        content:
+            en: !!str You are not allowed to delete data on module
+            vi: !!str Tài khoản của bạn không có quyền xoá dữ liệu trên chức năng bạn vừa làm việc
+    #End Authentication
+    #Start user-group module
+    - 
+        message_code: usergroupcontroller_001
+        type: 3
+        content:
+            en: !!str Please provide the group name
+            vi: !!str Vui lòng nhập vào tên nhóm user
+
+    - 
+        message_code: usergroupcontroller_002
+        type: 3
+        content:
+            en: !!str Group "{0}" is duplicated
+            vi: !!str Nhóm user "{0}" đã có
+    - 
+        message_code: usergroupcontroller_003
+        type: 3
+        content:
+            en: !!str User Group with ID "{0}" does not exist
+            vi: !!str Nhóm user có ID "{0}" không tồn tại
+    -
+        message_code: usergroupcontroller_004
+        type: 3
+        content:
+            en: !!str The User Group "{0}" is not allowed to edit
+            vi: !!str Nhóm user "{0}" không được phép sửa
+    -
+        message_code: usergroupcontroller_005
+        type: 3
+        content:
+            en: !!str The User Group "{0}" is not allowed to delete
+            vi: !!str Nhóm user "{0}" không được phép xoá
+    -
+        message_code: usergroupcontroller_006
+        type: 3
+        content:
+            en: !!str The User Group ID is not specified
+            vi: !!str Nhóm User không được cung cấp
+    -
+        message_code: branchcontroller_001
+        type: 3
+        content:
+            en: !!str Branch "{0}" is duplicated
+            vi: !!str Chi nhánh "{0}" đã có
+    # End Usergroup module
+    # Start permisison scheme module
+    -
+        message_code: permission-controller-id-invalid
+        type: 3
+        content:
+            en: !!str The scheme id is invalid
+            vi: !!str Mã kế hoạch phân quyền không hợp lệ
+    -
+        message_code: permission-controller-not-found
+        type: 3
+        content:
+            en: !!str The scheme id is not found
+            vi: !!str Không tìm thấy kế hoạch phân quyền
+    -
+        message_code: permissioncontroller_001
+        type: 3
+        content:
+            en: !!str The scheme {0} is duplicated
+            vi: !!str Kế hoạch phân quyền {0} đã có
+
+    -
+        message_code: not-allow-to-edit
+        type: 3
+        content:
+            en: !!str Không thể chỉnh sửa tên kế hoạch phân quyền mặc định
+            vi: !!str Default permission schemes cannot be edited name
+    # End permission scheme module
+    # Start promotion module
+    -
+        message_code: promotioncontroller_001
+        type: 3
+        content:
+            en: !!str Promotion with id {0} does not exist
+            vi: !!str Khuyến mãi với id {0} không tồn tại
+    -
+        message_code: promotioncontroller_002
+        type: 3
+        content:
+            en: !!str The promotion id is invalid
+            vi: !!str Mã khuyến mãi không hợp lệ
+    -
+        message_code: promotioncontroller_003
+        type: 3
+        content:
+            en: !!str Please provide the promotion title
+            vi: !!str Vui lòng nhập tiêu đề khuyến mãi
+    -
+        message_code: promotioncontroller_004
+        type: 3
+        content:
+            en: !!str Please provide the promotion content
+            vi: !!str Vui lòng nhập nội dung khuyến mãi
+    -
+        message_code: promotioncontroller_005
+        type: 3
+        content:
+            en: !!str Cannot edit the member care campaign
+            vi: !!str Không được phép chỉnh sửa chương trình khuyến mãi đã được chạy
+    -
+        message_code: promotioncontroller_006
+        type: 3
+        content:
+            en: !!str Valid date count must be a integer
+            vi: !!str Số ngày áp dụng phaỉ lớn hơn hoặc bằng 0
+    -
+        message_code: promotioncontroller_007
+        type: 3
+        content:
+            en: !!str Please select the voucher care campagin
+            vi: !!str Vui lòng chọn phiếu ưu đãi
+    # End Promotion Module
+    # Start news module
+    -
+        message_code: newscontroller_requiretitle
+        type: 3
+        content:
+            en: !!str Please provide the news title
+            vi: !!str Vui lòng nhập tiêu đề cho tin tức
+    -
+        message_code: newscontroller_requirecontent
+        type: 3
+        content:
+            en: !!str Please provide the news content
+            vi: !!str Vui lòng nhập nội dung cho tin tức
+    -
+        message_code: newscontroller_newnotfound
+        type: 3
+        content:
+            en: !!str Current news can not be found
+            vi: !!str Tin tức không được tìm thấy
+    # End News Module
+    # Start customer module
+    -
+        message_code: customer_module-name_required
+        type: 3
+        content:
+            en: !!str Please provide the customer name
+            vi: !!str Vui lòng nhập tên khách hàng
+    -
+        message_code: customer_module-phone_number_required
+        type: 3
+        content:
+            en: !!str Please provide the customer phone number
+            vi: !!str Vui lòng nhập số điện thoại khách hàng
+    -
+        message_code: customercontroller_duplicatephone
+        type: 3
+        content:
+            en: !!str Phone number {0} has been taken
+            vi: !!str Số điện thoại {0} đã được dùng
+    -
+        message_code: customercontrolle_failedcreation
+        type: 3
+        content:
+            en: !!str Can not create customer. Please try again.
+            vi: !!str Không thể tạo thành viên. Vui lòng thử lại.
+    -
+        message_code: customercontroller_duplicateemail
+        type: 3
+        content:
+            en: !!str Email {0} has been taken
+            vi: !!str Địa chỉ email {0} đã được dùng
+    -
+        message_code: customercontrolle_invalidemail
+        type: 3
+        content:
+            en: !!str Email is invalid.
+            vi: !!str Địa chỉ email không hợp lệ.
+    -
+        message_code: customercontrolle_invalidphonenumber
+        type: 3
+        content:
+            en: !!str Phone number is invalid
+            vi: !!str Số điện thoại không hợp lệ.
+    -
+        message_code: customercontroller_invalidName
+        type: 3
+        content:
+            en: !!str Member name contains invalid characters.
+            vi: !!str Tên hội viên chứa ký tự không hợp lệ.
+    -
+        message_code: customercontroller_cannotDowngradeMembershipType
+        type: 3
+        content:
+            en: !!str Cannot downgrade the membership type.
+            vi: !!str Không cho phép hạ hạng hội viên.
+    
+    -
+        message_code: mcustomercontroller_001
+        type: 3
+        content:
+            en: !!str Birthday is only allowed to edit one time
+            vi: !!str Bạn chỉ được phép chỉnh sửa ngày sinh duy nhất 1 lần
+    # End customer module
+    # Start member type
+    - 
+        message_code: membertype_config_code_required
+        type: 3
+        content:
+            en: !!str Please provide the member type code
+            vi: !!str Vui lòng cung cấp mã loại hội viên
+    -
+        message_code: membertype_config_code_invalid
+        type: 3
+        content:
+            en: !!str The member type code doesn't contain space character
+            vi: !!str Mã loại hội viên không được chứa khoảng trắng
+    - 
+        message_code: membertype_config_code_existed
+        type: 3
+        content: 
+            en: !!str The member type id [{0}] or member type name [{1}] has been taken
+            vi: !!str Mã loại hội viên [{0}] hoặc tên loại hội viên [{1}] đã được dùng
+    - 
+        message_code: membertype_config_name_required
+        type: 3
+        content:
+            en: !!str Please provide the member type name
+            vi: !!str Vui lòng cung cấp tên loại hội viên
+    - 
+        message_code: membertype_config_selected_date_required
+        type: 3
+        content:
+            en: !!str Please provide the selected date for voucher [{0}]
+            vi: !!str Vui lòng chọn ngày cho voucher [{0}]
+    - 
+        message_code: membertype_config_selected_point_required
+        type: 3
+        content:
+            en: !!str Please provide the selected point for voucher [{0}]
+            vi: !!str Vui lòng chọn điểm cho voucher [{0}]
+    - 
+        message_code: membertype_config_selected_point_must_be_positive_integer
+        type: 3
+        content:
+            en: !!str Selected point of voucher [{0}] must be positive integer
+            vi: !!str Điểm của voucher [{0}] phải lớn hơn hoặc bằng 0
+    - 
+        message_code: membertype_config_valid_date_count_must_be_positive_integer
+        type: 3
+        content:
+            en: !!str Valid date count of voucher [{0}] must be positive integer
+            vi: !!str Số ngày hiệu lực của voucher [{0}] phải lớn hơn hoặc bằng 0
+    -
+        message_code: membertype_accumulated_point_duplicated
+        type: 3
+        content:
+            en: !!str Point of accumulate membership type cannot be duplicated, the point [{0}] is using for membership type [{1}]
+            vi: !!str Điểm của những loại hội viên dùng để xếp hạng không được trùng nhau, số điểm [{0}] đang được dùng cho loại hội viên [{1}]
+    # End member type
+    # Start voucher module
+    -
+        message_code: VoucherController_RequiredName
+        type: 3
+        content:
+            en: !!str Please provide the voucher name
+            vi: !!str Vui lòng nhập tên voucher
+    -
+        message_code: VoucherController_DescriptionRequired
+        type: 3
+        content:
+            en: !!str Please provide the voucher description
+            vi: !!str Vui lòng nhập mô tả về voucher
+    -
+        message_code: VoucherController_RequiredCode
+        type: 3
+        content:
+            en: !!str Please provide the voucher code
+            vi: !!str Vui lòng nhập mã voucher
+    -
+        message_code: Voucher_Amount_Require
+        type: 3
+        content:
+            en: !!str Please provide the voucher amount
+            vi: !!str Vui lòng nhập giá trị giảm giá
+    -
+        message_code: Voucher_Amount_Percent_Maximum_Allow
+        type: 3
+        content:
+            en: !!str The maximum of discount amount percent is 100
+            vi: !!str Giá trị giảm giá cao nhất là 100%
+    -
+        message_code: Voucher_Does_Not_Exist
+        type: 3
+        content:
+            en: !!str Voucher doesn't exist
+            vi: !!str Voucher không tồn tại
+    -
+        message_code: Voucher_Invalid_Effective_Time
+        type: 3
+        content:
+            en: !!str The effective time is invalid
+            vi: !!str Thời gian có hiệu lực không đúng
+    -
+        message_code: Voucher_Batch_Export_Prefix_Required
+        type: 3
+        content:
+            en: !!str The prefix is mandatory. The prefix maximum length is 2 characters
+            vi: !!str Vui lòng nhập tiền tố, tiền tố tối đa 2 ký tự
+    -
+        message_code: Voucher_Batch_Export_Prefix_Max_Length
+        type: 3
+        content:
+            en: !!str The prefix maximum length is 2 characters
+            vi: !!str Tiền tố tối đa 2 ký tự
+    -
+        message_code: Voucher_Batch_Export_Prefix_Max_Publish_Count
+        type: 3
+        content:
+            en: !!str The publish count is maximum 1000
+            vi: !!str Số lượng tối đa 1000 code một lần phát hành
+    -
+        message_code: Voucher_Code_Max_Length
+        type: 3
+        content:
+            en: !!str The voucher code length is 6 characters
+            vi: !!str Mã voucher tối đa 6 ký tự
+    -
+        message_code: Duplicate_Voucher_Code
+        type: 3
+        content:
+            en: !!str Voucher code has already been taken
+            vi: !!str Mã voucher đã được sử dụng
+    -
+        message_code: Duplicate_Voucher_Code_In_Voucher_Running
+        type: 3
+        content:
+            en: !!str Voucher code has already been run. Please choose another code. 
+            vi: !!str Mã voucher đang được áp dụng. Vui lòng chọn lại mã khác.
+    -
+        message_code: Voucher_Was_Running
+        type: 3
+        content:
+            en: !!str Voucher code [{0}] has been using in a promotion. Please try again another code
+            vi: !!str Voucher code [{0}] đang được sử dụng ở một chương trình khuyến mãi. Vui lòng thử code khác
+    -
+        message_code: Voucher_Running_Update_Voucher_Invalid_Code
+        type: 3
+        content:
+            en: !!str Voucher code [{0}] is invalid
+            vi: !!str Mã voucher [{0}] không đúng
+    # End Voucher
+    # Start POS and Menu module
+    -
+        message_code: pos-name-required
+        type: 3
+        content:
+            en: !!str POS name is mandatory
+            vi: !!str Vui lòng nhập tên của điểm bán hàng
+    -
+        message_code: pos-phone-number-required
+        type: 3
+        content:
+            en: !!str Phone number is mandatory
+            vi: !!str Vui lòng nhập số điện thoại liên lạc của điểm bán hàng
+    -
+        message_code: pos-address-required
+        type: 3
+        content:
+            en: !!str Address is mandatory
+            vi: !!str Vui lòng nhập số địa chỉ của điểm bán hàng
+    # End POS and Menu module
+    # Start member care
+    -
+        message_code: give-voucher-voucher-required
+        type: 3
+        content:
+            en: !!str Voucher is mandatory
+            vi: !!str Vui lòng chọn voucher để tặng
+    -
+        message_code: give-voucher-message-required
+        type: 3
+        content:
+            en: !!str Notification message is mandatory
+            vi: !!str Vui lòng nhập nội dung thông báo
+    -
+        message_code: give-voucher-apply-days-required
+        type: 3
+        content:
+            en: !!str Affect date is mandatory
+            vi: !!str Vui lòng nhập thời gian có hiệu lực (thấp nhất là 1 ngày)
+    -
+        message_code: give-voucher-apply-days-min
+        type: 3
+        content:
+            en: !!str Apply days is 1 day minimum
+            vi: !!str Số ngày áp dụng thấp nhất là 1 ngày
+    -
+        message_code: give-voucher-invalid-affect-date
+        type: 3
+        content:
+            en: !!str The affect date is invalid. It must be from now to future
+            vi: !!str Thời gian có hiệu lực không hợp lệ
+
+    # End member care
+    # Start Notification
+    -
+        message_code: notification-title-required
+        type: 3
+        content:
+            en: !!str Title is mandatory
+            vi: !!str Vui lòng nhập tiêu đề
+    -
+        message_code: notification-message-required
+        type: 3
+        content:
+            en: !!str Body is mandatory
+            vi: !!str Vui lòng nhập nội dung
+    -
+        message_code: notification-timetoPush-required
+        type: 3
+        content:
+            en: !!str Time To Push is mandatory
+            vi: !!str Vui lòng nhập thời gian gửi
+    # End Notification
+            
