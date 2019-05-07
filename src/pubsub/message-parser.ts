@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { MessageService } from 'multilingual/message.service';
 import { isEmpty, isNil } from 'ramda';
 import { PubSubMessageBase } from '../core/modules/pubsub.client/model';
 import { IPubSubMessageParser } from '../core/modules/pubsub.client/parser';
-import { MessageService } from '../modules/message-pack/message.service';
 
 @Injectable()
 export class PubsubMessageParser implements IPubSubMessageParser {

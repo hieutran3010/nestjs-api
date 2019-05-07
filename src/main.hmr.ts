@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import * as bodyParser from 'body-parser';
 import { JwtAuthGuard } from 'modules/auth/strategy/jwt-auth-guard';
+import { MessageService } from 'multilingual/message.service';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/exception';
 import { LoggingService } from './core/modules/logging';
@@ -11,7 +12,6 @@ import {
 } from './modules/auth/context/request-context';
 import { AuthService } from './modules/auth/services/auth.service';
 import { IRoleValidator } from './modules/auth/strategy/role-validator.interface';
-import { MessageService } from './modules/message-pack/message.service';
 
 declare const module: any;
 

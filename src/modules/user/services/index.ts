@@ -1,9 +1,5 @@
-import { UserService } from './user.service';
+import { MessageService } from 'multilingual/message.service';
 import { UserSeeder } from '../migrations/user.seeder';
-import { MessageService } from '../../message-pack/message.service';
+import { UserService } from './user.service';
 
-export const dataServices = [
-    UserService,
-    UserSeeder,
-    MessageService
-];
+export const dataServices = [UserService, UserSeeder, MessageService];

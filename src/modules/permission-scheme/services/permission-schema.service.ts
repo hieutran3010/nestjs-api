@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { MESSAGE_CODE } from 'multilingual/message-codes';
 import { contains, isNil, map } from 'ramda';
 import { LingualBadRequestException } from '../../../core/exception/lingual-exceptions';
 import { RepositoryBase, RepositoryFactory } from '../../../core/modules/database/factory';
@@ -13,7 +14,6 @@ import { PermissionDTO,
 import { Controller, ControllerDto, controllerFields, ControllerSchema, schemeName } from '../../../documents/permission-controller';
 import { PermissionDetailFields } from '../../../documents/permission-detail';
 import { UserGroup, UserGroupFields, UserGroupSchema } from '../../../documents/user-group';
-import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { MessageCode } from '../constant';
 import { LoggingService } from './../../../core/modules/logging';
 

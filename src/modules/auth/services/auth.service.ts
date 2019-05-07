@@ -1,5 +1,6 @@
 import { ExecutionContext, HttpService, Injectable } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
+import { MESSAGE_CODE } from 'multilingual/message-codes';
 import { equals, filter, head } from 'ramda';
 import { AppConfigService } from '../../../app.config';
 import { MailerService } from '../../../core/modules/mailer/services';
@@ -10,7 +11,6 @@ import { PermissionFields } from '../../../documents/permission';
 import { controllerFields } from '../../../documents/permission-controller';
 import { PermissionDetailFields } from '../../../documents/permission-detail';
 import { BasicUserInfo, UserDto } from '../../../documents/user';
-import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { UserService } from '../../user/services/user.service';
 import { ResetPasswordConstant } from '../constant/reset-password.constant';
 import { SignedUser } from '../dto/signed-user.dto';

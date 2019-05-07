@@ -14,7 +14,7 @@ import {
 import { AuthService } from './modules/auth/services/auth.service';
 import { JwtAuthGuard } from './modules/auth/strategy/jwt-auth-guard';
 import { IRoleValidator } from './modules/auth/strategy/role-validator.interface';
-import { MessageService } from './modules/message-pack/message.service';
+import { MessageService } from './multilingual/message.service';
 
 async function bootstrap() {
   const configService = new AppConfigService(

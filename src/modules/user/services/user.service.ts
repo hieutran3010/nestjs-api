@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'bson';
+import { MESSAGE_CODE } from 'multilingual/message-codes';
 import { equals, head, isNil } from 'ramda';
 import { AppConfigService } from '../../../app.config';
 import {
@@ -22,7 +23,6 @@ import {
   UserGroupSchema,
 } from '../../../documents/user-group';
 import { RequestContext } from '../../auth/context/request-context';
-import { MESSAGE_CODE } from '../../message-pack/languages/message-codes';
 import { USER_MESSAGE_CODE } from '../const';
 
 @Injectable()

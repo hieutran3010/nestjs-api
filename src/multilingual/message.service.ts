@@ -34,7 +34,7 @@ export class MessageService {
   }
 
   public initialize() {
-    const fp = './src/modules/message-pack/languages/messages.yml';
+    const fp = './src/multilingual/messages.yml';
     fs.exists(fp, exist => {
       if (exist) {
         try {
