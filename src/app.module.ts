@@ -1,4 +1,6 @@
 import { Global, Module } from '@nestjs/common';
+import ReportModule from 'modules/report';
+import { SettingModule } from 'shared-modules/setting';
 import {
   AppConfigService,
   dbConfigProvider,
@@ -41,7 +43,9 @@ import { PubSubGateway, PubsubMessageParser } from './pubsub';
     PubSubClientModule,
     UserGroupModule,
     BranchModule,
-    TaskSchedulerModule
+    TaskSchedulerModule,
+    ReportModule,
+    SettingModule,
   ],
   controllers: [AppController],
   providers: [

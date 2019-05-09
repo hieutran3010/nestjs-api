@@ -18,6 +18,6 @@ export class UserModule extends PermissionModuleBase implements OnModuleInit {
   }
 
   onModuleInit() {
-    this.seederService.register(SeedPriority.MEDIUM, this.userSeeder);
+    // this.seederService.register(SeedPriority.MEDIUM, this.userSeeder);
   }
 }

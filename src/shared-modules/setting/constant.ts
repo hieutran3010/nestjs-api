@@ -1,0 +1,7 @@
+export const SETTING_KEY = {
+    FTP_HOST: 'FTP_HOST',
+    FTP_PORT: 'FTP_PORT',
+    FTP_USER: 'FTP_USER',
+    FTP_PASS: 'FTP_PASS',
+    RAW_DATA_PATH: 'RAW_DATA_PATH',
+};

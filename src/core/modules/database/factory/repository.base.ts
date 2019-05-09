@@ -45,7 +45,7 @@ export class RepositoryBase<T extends InterfaceBase> {
    * @returns {Promise<T>}
    * @memberof ServiceBase
    */
-  async create(dtoObject: DTOBase): Promise<T> {
+  async create(dtoObject): Promise<T> {
     dtoObject.create_on = new Date();
     dtoObject.create_by = IdentityHelper.getUsername();
     dtoObject.updated_by = null;

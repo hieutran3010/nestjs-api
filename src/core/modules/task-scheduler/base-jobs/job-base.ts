@@ -5,8 +5,8 @@ export abstract class JobBase {
   abstract name: string;
 
   public define(agenda: Agenda) {
-    agenda.define(this.name, job => {
-      this.execute();
+    agenda.define(this.name, async job => {
+      await this.execute();
     });
   }
 
@@ -14,5 +14,5 @@ export abstract class JobBase {
     agenda.every(this.interval, this.name);
   }
 
-  protected abstract execute();
+  protected abstract async execute();
 }

@@ -17,6 +17,6 @@ export class UserGroupModule extends PermissionModuleBase {
     super(service, controllers);
   }
   onModuleInit() {
-    this.seederService.register(SeedPriority.HIGH, this.userGroupSeeder);
+    // this.seederService.register(SeedPriority.HIGH, this.userGroupSeeder);
   }
 }

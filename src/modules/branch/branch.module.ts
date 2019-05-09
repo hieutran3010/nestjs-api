@@ -15,6 +15,6 @@ export class BranchModule implements OnModuleInit {
     constructor(private seederService: DatabaseSeedingService, private branchSeeder: BranchSeeder) { }
 
     onModuleInit() {
-        this.seederService.register(SeedPriority.HIGHEST, this.branchSeeder);
+        // this.seederService.register(SeedPriority.HIGHEST, this.branchSeeder);
     }
 }

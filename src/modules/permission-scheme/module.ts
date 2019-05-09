@@ -21,6 +21,6 @@ export class PermissionSchemeModule extends PermissionModuleBase implements OnMo
     }
 
     onModuleInit() {
-        this.seederService.register(SeedPriority.HIGHEST, this.schemeSeeder);
+        // this.seederService.register(SeedPriority.HIGHEST, this.schemeSeeder);
     }
 }

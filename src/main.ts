@@ -11,9 +11,9 @@ import {
   createRequestNamespace,
   initializeRequestContext,
 } from './modules/auth/context/request-context';
-import { AuthService } from './modules/auth/services/auth.service';
-import { JwtAuthGuard } from './modules/auth/strategy/jwt-auth-guard';
-import { IRoleValidator } from './modules/auth/strategy/role-validator.interface';
+// import { AuthService } from './modules/auth/services/auth.service';
+// import { JwtAuthGuard } from './modules/auth/strategy/jwt-auth-guard';
+// import { IRoleValidator } from './modules/auth/strategy/role-validator.interface';
 import { MessageService } from './multilingual/message.service';
 
 async function bootstrap() {
@@ -46,9 +46,9 @@ async function bootstrap() {
 
   app.useGlobalPipes(new CommonValidationPipe());
 
-  const authService = app.get<AuthService>(AuthService) as IRoleValidator;
-  // Initialize global JWT auth guard
-  app.useGlobalGuards(new JwtAuthGuard(authService));
+  // const authService = app.get<AuthService>(AuthService) as IRoleValidator;
+  // // Initialize global JWT auth guard
+  // app.useGlobalGuards(new JwtAuthGuard(authService));
 
   // Initialize request context
   const ns = createRequestNamespace();
