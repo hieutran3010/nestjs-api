@@ -13,8 +13,8 @@ export class SettingController {
     }
 
     @Put()
-    async update(@Body() setting: ISettingDocument) {
-        return await this.settingDataService.update(setting);
+    async update(@Body() settings: ISettingDocument[]) {
+        return await this.settingDataService.update(settings);
     }
 
     @Get('testFtpConnection')

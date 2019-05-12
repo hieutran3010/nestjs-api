@@ -4,7 +4,7 @@ import { RepositoryBase, RepositoryFactory } from 'core/modules/database/factory
 import { ServiceBase } from 'core/modules/database/service';
 import { LoggingService } from 'core/modules/logging';
 import { ISettingDocument, SettingSchema } from 'documents/setting';
-import { get, keyBy } from 'lodash';
+import { get, keyBy, forEach } from 'lodash';
 import { SETTING_KEY } from './constant';
 
 @Injectable()
@@ -28,8 +28,10 @@ export default class SettingDataService extends ServiceBase {
         return await this.settingRepository.findAll();
     }
 
-    async update(setting: ISettingDocument) {
-        return await this.settingRepository.update(setting._id, setting);
+    async update(settings: ISettingDocument[]) {
+        for (const setting of settings) {
+            await this.settingRepository.update(setting._id, setting);
+        }
     }
 
     async testConnection() {

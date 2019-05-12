@@ -15,6 +15,12 @@ export class ReportController {
 
     @Get('manual-crawl-data')
     async manualCrawlData() {
-        return await this.rawReportDataCrawler.crawlRawData();
+        this.rawReportDataCrawler.crawlRawData();
+        return 'ok';
+    }
+
+    @Get('sync-history')
+    async getSyncHistory() {
+        return await this.reportDataService.getSyncHistory();
     }
 }

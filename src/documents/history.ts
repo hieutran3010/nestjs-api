@@ -5,9 +5,10 @@ interface IHistoryDocument extends InterfaceBase {
   source: string;
   destination: string;
   callOrigin: string;
-  connectTime?: number;
-  disconnectTime?: number;
+  connectTime?: Date;
+  disconnectTime?: Date;
   duration: number;
+  durationFormat: string;
 }
 
   /**
@@ -19,9 +20,10 @@ const HistorySchema = new SchemaBase({
   source: { type: String },
   destination: { type: String },
   callOrigin: { type: String },
-  connectTime: { type: Number },
-  disconnectTime: { type: Number },
-  duration: { type: Number }
+  connectTime: { type: Date },
+  disconnectTime: { type: Date },
+  duration: { type: Number },
+  durationFormat: { type: String },
 });
 
 export { IHistoryDocument, HistorySchema };

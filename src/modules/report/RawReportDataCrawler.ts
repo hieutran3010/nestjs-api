@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { RepositoryBase, RepositoryFactory } from 'core/modules/database/factory';
 import { LoggingService } from 'core/modules/logging';
 import { JobBase } from 'core/modules/task-scheduler/base-jobs';
+import { CrawlDataHistorySchema, ICrawlDataHistoryDocument } from 'documents/crawl-data-history';
 import { HistorySchema, IHistoryDocument } from 'documents/history';
 import { ISettingDocument, SettingSchema } from 'documents/setting';
 import { get , isEmpty, isNil, keyBy, maxBy, round, trim } from 'lodash';
@@ -13,6 +14,7 @@ export class RawReportDataCrawler extends JobBase {
     logger: any;
     historyRepository: RepositoryBase<IHistoryDocument>;
     settingRepository: RepositoryBase<ISettingDocument>;
+    crawlDataHistoryRepository: RepositoryBase<ICrawlDataHistoryDocument>;
 
     constructor(loggingService: LoggingService,
                 private readonly repositoryFactory: RepositoryFactory) {
@@ -25,6 +27,8 @@ export class RawReportDataCrawler extends JobBase {
     private async resolveServicesAsync() {
         this.historyRepository = await this.repositoryFactory.getRepository<IHistoryDocument>('history', HistorySchema);
         this.settingRepository = await this.repositoryFactory.getRepository<ISettingDocument>('setting', SettingSchema);
+        this.crawlDataHistoryRepository =
+        await this.repositoryFactory.getRepository<ICrawlDataHistoryDocument>('crawl-data-history', CrawlDataHistorySchema);
     }
 
     protected async execute() {
@@ -41,14 +45,15 @@ export class RawReportDataCrawler extends JobBase {
         };
         const ftpSettings = await this.settingRepository.find(ftpSettingQuery);
         const ftpSetting = keyBy(ftpSettings, 'key');
-
-        const jsFtp = require('jsftp');
-        const ftp = new jsFtp({
+        const formattedFtpSetting = {
             host: get(ftpSetting[SETTING_KEY.FTP_HOST], 'value'),
             port: +get(ftpSetting[SETTING_KEY.FTP_PORT], 'value'),
             user: get(ftpSetting[SETTING_KEY.FTP_USER], 'value'),
             pass: get(ftpSetting[SETTING_KEY.FTP_PASS], 'value'),
-        });
+        };
+
+        const jsFtp = require('jsftp');
+        const ftp = new jsFtp(formattedFtpSetting);
 
         const locationData = await this.settingRepository.findOne({key: SETTING_KEY.RAW_DATA_PATH});
         const location = locationData.value;
@@ -93,6 +98,14 @@ export class RawReportDataCrawler extends JobBase {
 
     async processingFile(fileBuffer, fileName) {
         this.logger.info('processing...START;fileName=', fileName);
+
+        const crawlDataHistory = {
+            fileName,
+            time: Date.now(),
+        };
+
+        await this.crawlDataHistoryRepository.create(crawlDataHistory);
+
         const Excel = require('exceljs');
         const stream = require('stream');
 
@@ -104,6 +117,7 @@ export class RawReportDataCrawler extends JobBase {
 
         writeStream.on('done', () => {
             const moment = require('moment');
+
             const worksheet = workbook.getWorksheet(1);
             worksheet.eachRow({ includeEmpty: false }, async (row, rowNumber) => {
                     try {
@@ -155,18 +169,20 @@ export class RawReportDataCrawler extends JobBase {
         const callOrigin = row.getCell(14).value; // h323-call-origin
         const connectTime = this.formatRawDateTime(row.getCell(10).value, moment); // h323-connect-time
         const disconnectTime = this.formatRawDateTime(row.getCell(11).value, moment); // h323-disconnect-time
-        const duration = isNil(disconnectTime) || isNil(connectTime)
-        ? 0
-        : round(moment.duration(disconnectTime.diff(connectTime)).asMinutes(), 2);
+
+        const rawDuration = isNil(disconnectTime) || isNil(connectTime) ? null : moment.duration(disconnectTime.diff(connectTime));
+        const duration = isNil(rawDuration) ? 0 : round(rawDuration.asMinutes(), 2);
+        const durationFormat = isNil(rawDuration) ? '' : moment.utc(rawDuration.asMilliseconds()).format('HH:mm:ss');
 
         const history = {
             sequence,
             source,
             destination,
             callOrigin,
-            connectTime: isNil(connectTime) ? connectTime : connectTime.unix(),
-            disconnectTime: isNil(disconnectTime) ? disconnectTime : disconnectTime.unix(),
-            duration: duration.toString(),
+            connectTime: isNil(connectTime) ? connectTime : connectTime.toDate(),
+            disconnectTime: isNil(disconnectTime) ? disconnectTime : disconnectTime.toDate(),
+            duration,
+            durationFormat,
         };
 
         return history;
