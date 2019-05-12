@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { RepositoryBase, RepositoryFactory } from 'core/modules/database/factory';
-import { LoggingService } from 'core/modules/logging';
-import { JobBase } from 'core/modules/task-scheduler/base-jobs';
-import { CrawlDataHistorySchema, ICrawlDataHistoryDocument } from 'documents/crawl-data-history';
-import { HistorySchema, IHistoryDocument } from 'documents/history';
-import { ISettingDocument, SettingSchema } from 'documents/setting';
 import { get , isEmpty, isNil, keyBy, maxBy, round, trim } from 'lodash';
-import { SETTING_KEY } from 'shared-modules/setting/constant';
+import { RepositoryBase, RepositoryFactory } from '../../core/modules/database/factory';
+import { LoggingService } from '../../core/modules/logging';
+import { JobBase } from '../../core/modules/task-scheduler/base-jobs';
+import { CrawlDataHistorySchema, ICrawlDataHistoryDocument } from '../../documents/crawl-data-history';
+import { HistorySchema, IHistoryDocument } from '../../documents/history';
+import { ISettingDocument, SettingSchema } from '../../documents/setting';
+import { SETTING_KEY } from '../../shared-modules/setting/constant';
 
 @Injectable()
 export class RawReportDataCrawler extends JobBase {

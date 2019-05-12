@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-api",
-  "version": "0.1.0",
-  "description": "An api platform is developed by NestJS framework",
+  "name": "bluehat-billreport-api",
+  "version": "1.0.0",
+  "description": "The api for Bill Report system of Blue Hat Company",
   "author": "flex-solutions",
   "license": "MIT",
   "scripts": {

@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { LingualServiceUnavailableException } from 'core/exception/lingual-exceptions';
-import { RepositoryBase, RepositoryFactory } from 'core/modules/database/factory';
-import { ServiceBase } from 'core/modules/database/service';
-import { LoggingService } from 'core/modules/logging';
-import { ISettingDocument, SettingSchema } from 'documents/setting';
-import { get, keyBy, forEach } from 'lodash';
+import { get, keyBy } from 'lodash';
+import { LingualServiceUnavailableException } from '../../core/exception/lingual-exceptions';
+import { RepositoryBase, RepositoryFactory } from '../../core/modules/database/factory';
+import { ServiceBase } from '../../core/modules/database/service';
+import { LoggingService } from '../../core/modules/logging';
+import { ISettingDocument, SettingSchema } from '../../documents/setting';
 import { SETTING_KEY } from './constant';
 
 @Injectable()

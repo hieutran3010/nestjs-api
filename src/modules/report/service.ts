@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { RepositoryBase, RepositoryFactory } from 'core/modules/database/factory';
-import { ServiceBase } from 'core/modules/database/service';
-import { LoggingService } from 'core/modules/logging';
-import { CrawlDataHistorySchema, ICrawlDataHistoryDocument } from 'documents/crawl-data-history';
-import { HistorySchema, IHistoryDocument } from 'documents/history';
+import { RepositoryBase, RepositoryFactory } from '../../core/modules/database/factory';
+import { ServiceBase } from '../../core/modules/database/service';
+import { LoggingService } from '../../core/modules/logging';
+import { CrawlDataHistorySchema, ICrawlDataHistoryDocument } from '../../documents/crawl-data-history';
+import { HistorySchema, IHistoryDocument } from '../../documents/history';
 
 @Injectable()
 export default class ReportDataService extends ServiceBase {

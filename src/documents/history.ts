@@ -1,4 +1,4 @@
-import { InterfaceBase, SchemaBase } from 'core/modules/database/contract/base.document';
+import { InterfaceBase, SchemaBase } from '../core/modules/database/contract/base.document';
 
 interface IHistoryDocument extends InterfaceBase {
   sequence: number;

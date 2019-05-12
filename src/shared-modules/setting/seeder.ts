@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { IDatabaseSeeder } from 'core/modules/database/contract/seeding';
-import { RepositoryBase, RepositoryFactory } from 'core/modules/database/factory';
-import { ISettingDocument, SettingSchema } from 'documents/setting';
+import { IDatabaseSeeder } from '../../core/modules/database/contract/seeding';
+import { RepositoryBase, RepositoryFactory } from '../../core/modules/database/factory';
+import { ISettingDocument, SettingSchema } from '../../documents/setting';
 import { SETTING_KEY } from './constant';
 
 @Injectable()

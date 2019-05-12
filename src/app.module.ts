@@ -1,6 +1,4 @@
 import { Global, Module } from '@nestjs/common';
-import ReportModule from 'modules/report';
-import { SettingModule } from 'shared-modules/setting';
 import {
   AppConfigService,
   dbConfigProvider,
@@ -26,10 +24,12 @@ import { ServiceContainerModule } from './core/modules/service-container/module'
 import { AuthModule } from './modules/auth/auth.module';
 import { BranchModule } from './modules/branch/branch.module';
 import { PermissionSchemeModule } from './modules/permission-scheme/module';
+import ReportModule from './modules/report';
 import { UserGroupModule } from './modules/user-group/module';
 import { UserModule } from './modules/user/user.module';
 import { MessageService } from './multilingual/message.service';
 import { PubSubGateway, PubsubMessageParser } from './pubsub';
+import { SettingModule } from './shared-modules/setting';
 @Global()
 @Module({
   imports: [
