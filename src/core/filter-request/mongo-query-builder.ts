@@ -1,5 +1,5 @@
+import { isNullOrEmptyOrUndefined } from 'core/utils';
 import { ObjectId } from 'mongodb';
-import { isNullOrEmptyOrUndefined } from '../../util';
 import { FilterType, IFilter, IFilterQueryBuilder, ValueType } from './interfaces';
 
 abstract class MongoFilterQueryBuilder implements IFilterQueryBuilder {

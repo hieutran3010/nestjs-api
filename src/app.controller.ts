@@ -2,8 +2,8 @@ import {
   Controller,
   Get,
 } from '@nestjs/common';
-import { DatabaseSeedingService } from 'core/modules/database/service';
-import { fileToJSON } from 'core/utils';
+import { DatabaseSeedingService } from './core/modules/database/service';
+import { fileToJSON } from './core/utils';
 
 @Controller('app')
 export class AppController {
