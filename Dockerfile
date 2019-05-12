@@ -1,6 +1,6 @@
 ARG NODE_VERSION=8.11.3
 FROM ubuntu:16.04
-LABEL maintainer="Thuoc Nam Le <thuocle@fless.vn>"
+LABEL maintainer="Hieu Trung Tran <hieutran@fless.vn>"
 LABEL name="nest-be-platform"
 RUN mkdir -p /src
 WORKDIR /src
@@ -23,12 +23,12 @@ USER linuxbrew
 WORKDIR /home/linuxbrew
 
 # Install linuxbrew
-RUN git clone https://github.com/Linuxbrew/brew.git .linuxbrew
+RUN git clone https://github.com/Homebrew/brew .linuxbrew
 ENV PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH \
     SHELL=/bin/bash
 
 # Install neccesary packages
-RUN brew install -y pkg-config cairo pango libpng jpeg giflib
+RUN brew install pkg-config cairo pango libpng jpeg giflib
 
 FROM node:${NODE_VERSION}
 # Install the latest version of npm
@@ -46,10 +46,20 @@ COPY package*.json ./
 # RUN apt-get update && apt-get install -y yarn
 # RUN yarn --version
 
+RUN npm cache clean --force
+RUN rm -rf ~/.npm
+# In the project folder:
+RUN rm -rf node_modules
+RUN rm -f package-lock.json
+
 RUN npm install
 RUN npm install bcrypt @types/bcrypt
 
 COPY . .
+
+ENV TZ=Asia/Ho_Chi_Minh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ >> /etc/timezone \
+    dpkg-reconfigure -f noninteractive tzdata
 
 EXPOSE 3000
 
